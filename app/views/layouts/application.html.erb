@@ -8,16 +8,11 @@
 </head>
 <body>
 <div id="user_menu">
+  <%= link_to 'Find groups', groups_path %>
   <% if user_signed_in? %>
-    Welcome 
-    <%= current_user.email %> 
-    would you like to 
-    <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+    <%= render partial: 'users/signed_in_menu' %>
   <% else %>
-    Please 
-    <%= link_to 'Sign in', new_user_session_path %> 
-    or 
-    <%= link_to 'Sign up', new_user_registration_path %>
+    <%= render partial: 'users/signed_out_menu' %>
   <% end %>
 </div>
 <%= yield %>

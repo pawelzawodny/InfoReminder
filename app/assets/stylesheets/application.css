@@ -14,5 +14,10 @@ div#user_menu
   border-style: solid;
   border-radius: 3px;
 
+}
+
+div#credentials_information
+{
+  float: right;
   text-align: right;
 }

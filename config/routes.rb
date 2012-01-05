@@ -1,4 +1,10 @@
 InfoReminder::Application.routes.draw do
+  resources :groups do
+    collection do 
+      get :manage
+    end
+  end
+
   devise_for :users
 
   # The priority is based upon order of creation:
