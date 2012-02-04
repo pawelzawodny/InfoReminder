@@ -1,0 +1,28 @@
+<h1>Listing events</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Date</th>
+    <th>Group</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%= event.title %></td>
+    <td><%= event.description %></td>
+    <td><%= event.date %></td>
+    <td><%= event.group %></td>
+    <td><%= link_to 'Show', group_event_path(event.group_id, event.id) %></td>
+    <td><%= link_to 'Edit', edit_group_event_path(event.group.id, event.id) %></td>
+    <td><%= link_to 'Destroy', group_event_path(event.group_id, event.id), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

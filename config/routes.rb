@@ -3,8 +3,10 @@ InfoReminder::Application.routes.draw do
     collection do 
       get :manage
     end
+    resources :events
   end
 
+  match 'events' => 'events#all', :as => 'user_events'
   devise_for :users
 
   # The priority is based upon order of creation:
