@@ -1,10 +1,5 @@
 class EventsController < ApplicationController
   before_filter :fetch_group 
-
-  def fetch_group
-    @group = Group.find params[:group_id] unless params[:group_id].nil?
-  end
-
   def all
     @events = Event.find_user_events(current_user)
 

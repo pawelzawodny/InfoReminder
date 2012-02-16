@@ -4,6 +4,7 @@ InfoReminder::Application.routes.draw do
       get :manage
     end
     resources :events
+    resources :categories
   end
 
   match 'events(.:format)' => 'events#all', :as => 'user_events'

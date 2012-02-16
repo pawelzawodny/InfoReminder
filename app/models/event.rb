@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :group
+  belongs_to :category
 
   def self.find_user_events(user) 
     groups = Group.find_user_groups(user)

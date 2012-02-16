@@ -20,6 +20,10 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :category %>
+    <%= f.collection_select(:category_id, @group.categories, :id, :name) %>
+  </div>
+  <div class="field">
     <%= f.label :date %><br />
     <%= f.datetime_select :date %>
   </div>
