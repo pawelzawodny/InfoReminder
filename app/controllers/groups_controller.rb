@@ -11,6 +11,26 @@ class GroupsController < ApplicationController
     end
   end
 
+  # Action used to confirm that user wants to join this group
+  def confirm_join 
+    @group = Group.find(params[:id])
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def join
+    @group = Group.find(params[:id])
+
+    if @group.add_member(current_user)
+      @success = true
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @group }
+    end
+  end
   # GET /groups/1
   # GET /groups/1.json
   def show
@@ -84,7 +104,8 @@ class GroupsController < ApplicationController
   end
 
   def manage
-    @groups = Group.where( user_id: current_user.id ).all
+    @groups = Group.find_user_groups(current_user)
+    #@groups = Group.where( user_id: current_user.id ).all
     respond_to do |format|
       format.html 
     end

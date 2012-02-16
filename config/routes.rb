@@ -8,6 +8,8 @@ InfoReminder::Application.routes.draw do
   end
 
   match 'events(.:format)' => 'events#upcoming', :as => 'upcoming_events'
+  match 'confirm/join/:id/(:invitation_hash)' => 'groups#confirm_join', :as => 'confirm_join_group'
+  match 'join/:id/(:invitation_hash)' => 'groups#join', :as => 'join_group'
   devise_for :users
 
   # The priority is based upon order of creation:

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  write: false
+  read: false
+  manage: false
+  user_id: 1
+  group_id: 1
+
+two:
+  write: false
+  read: false
+  manage: false
+  user_id: 1
+  group_id: 1
