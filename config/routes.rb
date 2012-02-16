@@ -7,7 +7,7 @@ InfoReminder::Application.routes.draw do
     resources :categories
   end
 
-  match 'events(.:format)' => 'events#all', :as => 'user_events'
+  match 'events(.:format)' => 'events#upcoming', :as => 'upcoming_events'
   devise_for :users
 
   # The priority is based upon order of creation:

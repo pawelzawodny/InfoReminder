@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_filter :fetch_group 
-  def all
+  def upcoming 
     @events = Event.find_user_events(current_user)
 
     respond_to do |format|
