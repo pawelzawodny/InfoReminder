@@ -7,4 +7,23 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :auth_tokens
+
+  #
+  # Class methods
+  #
+
+  # Returns User object if token matches specified user_id
+  # or it returns nil if there is no such user
+  def self.verify_auth_token(user_id, token)
+    User.includes(:auth_tokens).
+    where(id: user_id, 'auth_tokens.token' => token).
+    first
+  end
+
+  #
+  # Instance methods
+  #
+  def upcoming_events
+    Event.find_user_events(self).where(date: 2.days.ago .. Time.now)
+  end
 end

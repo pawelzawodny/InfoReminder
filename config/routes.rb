@@ -11,6 +11,7 @@ InfoReminder::Application.routes.draw do
   match 'confirm/join/:id/(:invitation_hash)' => 'groups#confirm_join', :as => 'confirm_join_group'
   match 'join/:id/(:invitation_hash)' => 'groups#join', :as => 'join_group'
   match 'download' => 'client#prepare_download', :as => 'client_download'
+  match 'client/:action(.:format)/(:user_id/:auth_token)' => 'client'
   devise_for :users
 
   # The priority is based upon order of creation:
