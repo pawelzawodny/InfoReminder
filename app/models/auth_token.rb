@@ -3,7 +3,7 @@ class AuthToken < ActiveRecord::Base
 
   # Creates authentication token in database and returns object
   def self.create_for_user(user)
-    token = Digest::SHA1.new(Time.now + user.id)
+    token = Digest::SHA1.new.hexdigest(Time.now.to_s + user.id.to_s)
     auth_obj = AuthToken.create({ 
       token: token.to_s,
       user_id: user.id
