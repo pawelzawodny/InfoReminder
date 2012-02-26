@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
   # Instance methods
   #
   def upcoming_events
-    Event.find_user_events(self).where(date: 2.days.ago .. Time.now)
+    days_to_event = configuration['events.notification_interval'].value.to_i
+    Event.find_user_events(self).where(date: days_to_event.days.ago .. Time.now)
   end
 
   def configuration
