@@ -2,7 +2,6 @@ class Configuration < ActiveRecord::Base
   has_many :configuration_values
   belongs_to :configuration_type
 
-  attr_reader :value
   attr_accessor :configuration_value
 
   def self.get_configuration
@@ -35,5 +34,9 @@ class Configuration < ActiveRecord::Base
  
   def value=(val)
     self.configuration_value.value = val
+  end
+
+  def value
+    self.configuration_value.value
   end
 end

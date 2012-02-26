@@ -8,6 +8,17 @@ class SettingsController < ApplicationController
   end
 
   def save
-        
+    params.each do |name, value|
+      if current_user.configuration.has_key?(name)
+        config = current_user.configuration[name]
+        config.value = value
+
+        if(config.modified?)
+          config.configuration_value.save
+        end
+      end
+    end
+
+    redirect_to action: 'show'
   end
 end
