@@ -1,0 +1,8 @@
+Your settings
+
+<%= form_tag({ :controller => 'settings', :action => 'save' }, :method => 'post') do |f| %>
+  <% current_user.configuration.each do |name, config| %>
+    <%= render :partial => 'configuration_field', :locals => { :config => config } %>
+  <% end %>
+  <%= submit_tag("Save") %>
+<% end %>

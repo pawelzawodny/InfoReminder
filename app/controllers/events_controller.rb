@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   before_filter :fetch_group 
+  before_filter :authenticate_user!
+
   def upcoming 
     @events = Event.find_user_events(current_user)
 

@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+StringType = ConfigurationType.create({ name: 'String', default: '', helper_method: 'text_configuration_field' })
+
+IntegerType = ConfigurationType.create({ name: 'Integer', default: '0', helper_method: 'text_configuration_field' })
+
+DateType = ConfigurationType.create({ name: 'Date', default: 'CURRENT_TIMESTAMP', helper_method: 'date_configuration_field' })
+
+CollectionType = ConfigurationType.create({ name: 'Collection', default: '', helper_method: 'collection_configuration_field' })
+
+Configuration.create([
+  { 
+    name: 'events.notification_interval',
+    label_text: 'Notification interval',
+    description: 'How many days before event should we inform you?',
+    configuration_type_id: IntegerType.id
+  }
+])

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120216135201) do
+ActiveRecord::Schema.define(:version => 20120226143924) do
 
   create_table "auth_tokens", :force => true do |t|
     t.string   "token"
@@ -24,6 +24,32 @@ ActiveRecord::Schema.define(:version => 20120216135201) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "configuration_types", :force => true do |t|
+    t.string   "name"
+    t.string   "default"
+    t.string   "helper_method"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "configuration_values", :force => true do |t|
+    t.integer  "configuration_id"
+    t.integer  "user_id"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "configurations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "description"
+    t.integer  "configuration_type_id"
+    t.string   "default"
+    t.string   "label_text"
   end
 
   create_table "events", :force => true do |t|

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :auth_tokens
+  has_many :configuration_values
 
   #
   # Class methods
@@ -25,5 +26,9 @@ class User < ActiveRecord::Base
   #
   def upcoming_events
     Event.find_user_events(self).where(date: 2.days.ago .. Time.now)
+  end
+
+  def configuration
+    @config ||= Configuration.get_configuration_for_user(self)
   end
 end
