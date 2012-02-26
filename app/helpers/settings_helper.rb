@@ -1,6 +1,6 @@
 module SettingsHelper
   def text_configuration_field(config)
-    text_field_tag config.label_text, config.value 
+    text_field_tag config.name, config.value 
   end
 
   def configuration_field(config)
