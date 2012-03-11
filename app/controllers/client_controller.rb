@@ -27,7 +27,7 @@ class ClientController < ApplicationController
     events = @current_user.upcoming_events
 
     respond_to do |format|
-      format.json { render json: events }
+      format.json { render json: events, include: [ :group, :category ] }
     end
   end
 
