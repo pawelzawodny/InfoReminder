@@ -17,7 +17,13 @@ class ClientController < ApplicationController
   end
 
   def prepare_download
-    @token = AuthToken.create_for_user(current_user)
+    @app = Application.create_for_user(current_user)
+    
+    # Start generating personalised installer in new thread
+    Thread.new do 
+      SetupManagerInstance.build_setup @app
+    end
+
     respond_to do |format|
       format.html
     end

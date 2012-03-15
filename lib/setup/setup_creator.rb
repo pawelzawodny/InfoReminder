@@ -26,9 +26,21 @@ class SetupCreator
   end
 
   def build_setup
-    setup_path = "#{config['destination_path']}/setup.exe"
+    setup_path = generate_setup_path
     builder.build(config['temp_path'], setup_path);
 
     setup_path
   end
+
+  private
+  # Generates random setup path 
+  def generate_setup_path
+    random_hash = Digest::SHA1.new.hexdigest(Time.now.to_s)
+    filename = "#{config['destination_path']}/setup#{random_hash}.exe"
+    if(File.exists?(filename))
+      generate_setup_path
+    else
+      filename
+    end
+  end 
 end
