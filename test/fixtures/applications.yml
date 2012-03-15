@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  auth_token_id: 1
+  status: MyString
+  setup_path: MyString
+  version: MyString
+  build_started_at: 2012-03-15 16:32:27
+
+two:
+  name: MyString
+  auth_token_id: 1
+  status: MyString
+  setup_path: MyString
+  version: MyString
+  build_started_at: 2012-03-15 16:32:27

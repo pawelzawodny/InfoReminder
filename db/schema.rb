@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120226143924) do
+ActiveRecord::Schema.define(:version => 20120315153227) do
+
+  create_table "applications", :force => true do |t|
+    t.string   "name"
+    t.integer  "auth_token_id"
+    t.string   "status"
+    t.string   "setup_path"
+    t.string   "version"
+    t.datetime "build_started_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "auth_tokens", :force => true do |t|
     t.string   "token"

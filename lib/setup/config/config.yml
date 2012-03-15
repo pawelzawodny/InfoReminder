@@ -1,0 +1,17 @@
+global:
+  max_threads: 10
+  builder_path: ./lib/setup/builders/
+  configurator_path: ./lib/setup/configurators/
+apps:
+  desktop:
+    builder: InstallCreatorBuilder
+    configurator: DesktopSetupConfigurator 
+    template_path: /tmp/setup
+    destination_path: /tmp/setup_execs
+    temp_path: /tmp/tmp_build
+    options:
+      install_creator_exec: xvfb-run wine /tmp/ic/ic.exe
+      config_file: setup/info-reminder-client.config
+      project_file: install.iit
+      root_drive: 'Z:'
+      display: ':1'
