@@ -1,0 +1,36 @@
+// Place all the styles related to the setup controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#setup {
+  p#status_info {
+    display: block;
+    text-align: center;
+  }
+
+  &.loading {
+    div.big_loading_bar {
+      display: block;
+
+      height: 15px;
+
+      background-image: url('big-ajax-loader.gif');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    p { 
+      color: orange;
+    }
+ }
+  
+  &.ready {
+    p {
+      color: green;
+    }
+
+    div.big_loading_bar {
+      display: none;
+    } 
+  }
+}

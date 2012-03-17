@@ -27,6 +27,7 @@ class SetupManager
   end
 
   def initialize
+    @logger = Rails.logger
     load_config
   end
 
@@ -40,6 +41,8 @@ class SetupManager
   end
 
   def build_setup(app)
+    info "Setup build started", app
+
     app.status = IN_PROGRESS_STATUS
     app.save
     app_name = "desktop"
@@ -65,9 +68,18 @@ class SetupManager
         auth_token: app.auth_token.token
       } 
     })
+    
+    info "Application configured", app
+
     app.setup_path = creator.build_setup
     app.status = READY_STATUS
     app.save
+
+    info "Application built", app
   end
 
+  private
+  def info(msg, app)
+    Rails.logger.info "[Build Service:Application Id:#{app.id}] > #{msg}"
+  end
 end

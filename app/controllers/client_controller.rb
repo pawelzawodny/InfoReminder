@@ -29,6 +29,18 @@ class ClientController < ApplicationController
     end
   end
 
+  def get_application_status
+    app = Application.where('auth_token.user_id' => current_user.id, :id => params[:id]).first
+
+    respond_to do |format|
+      format.json { render json: app }
+    end
+  end
+
+  def download
+    
+  end
+
   def upcoming_events
     events = @current_user.upcoming_events
 
