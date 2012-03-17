@@ -1,6 +1,7 @@
 root_path = File.dirname(__FILE__)
 
 require 'yaml'
+require "#{root_path}/helpers/path_helper.rb"
 require "#{root_path}/configurators/abstract_configurator.rb"
 require "#{root_path}/builders/abstract_builder.rb"
 require "#{root_path}/setup_creator.rb"
@@ -72,10 +73,15 @@ class SetupManager
     info "Application configured", app
 
     app.setup_path = creator.build_setup
+
+    info "Application built", app
+
+    creator.clean
+
     app.status = READY_STATUS
     app.save
 
-    info "Application built", app
+    info "Task complete", app
   end
 
   private
