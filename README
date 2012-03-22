@@ -1,22 +1,64 @@
 InfoReminder
 
-1. About project
+I. About project
 It's application which solves problem of forgetting important things. All you need to do is to sign up to info groups which concerns you most. We will handle the rest. You will see notification for each event at specified date! 
 
-2. Running dev environment
-To run web application simply enter following commands:
-bundle --path=~/.gems
-bundle exec rake db:migrate (or just rake db:migrate)
-rails s
+II. Running dev environment
+To run web application just enter following commands:
+1. bundle --path=~/.gems
+2. bundle exec rake db:migrate (or just rake db:migrate)
+3. rails s
 
 Application will start at tcp port 3000 by default
 
-3. Team members
+In order to configure personalised installers builder please do following steps:
+
+Linux environment:
+1. Get latest source of desktop application and compile it (This step must be done on windows)
+2. Install following tools: wine, xvfb
+3. Install program "Install Creator" (On linux you can do this like this: wine icinst.exe)
+4. Run script prepare_setup_builder_environment.sh located under scripts directory with following arguments
+
+   ./scripts/prepare_setup_builder_environment.sh PATH_TO_DESKTOP_APPLICATION PATH_TO_INSTALL_CREATOR
+
+   where PATH_TO_DESKTOP_APPLICATION is directory where you store desktop app sources
+   and PATH_TO_INSTALL_CREATOR is directory where you installed "Install Creator"
+5. Your build service is ready, you can verify it's working by running web application and choosing "Download" link.
+
+Windows environment:
+Configuring windows environment requires more effort so consider using linux.
+
+1. Get latest source of desktop application and compile it (This step must be done on windows)
+2. Install program "Install Creator" 
+3. Under C:\builder create following directories:
+   tmp
+   execs
+   setup
+   ic
+4. Copy "Install Creator" to ic directory
+5. Copy everything from PATH_TO_DESKTOP_APPLICATION\setup to C:\builder\setup 
+6. Edit file "lib/setup/config/config.yml" located in web application directory
+7. Change all paths to windows style paths and change paths to ic, tmp, template and destination
+8. Change root_drive to ''
+9. Your build service should be ready now, you can verify it's working by running web application and choosing "Download" link.
+
+./scripts/prepare_setup_builder_environment.sh PATH_TO_DESKTOP_APPLICATION PATH_TO_INSTALL_CREATOR
+
+where PATH_TO_DESKTOP_APPLICATION is directory where you store desktop app sources
+and PATH_TO_INSTALL_CREATOR is directory where you installed "Install Creator"
+
+Notice:
+On your all client machines which will use desktop app you need to edit hosts file. 
+On windows you'll need to append following line to C:\Windows\System32\drivers\etc\hosts
+
+127.0.0.1 inforeminder
+
+III. Team members
 Wojtek Przebieracz
 Mateusz Skorb
 Mateusz Szygenda
 
-4. Thoughts and ideas
+IV. Thoughts and ideas
 We should get a nice domain i.e. inforeminder.com, remind.info, remind.me, notify.me, reminder.com, reminder.info
 
 We should create International version localised according to user location.
