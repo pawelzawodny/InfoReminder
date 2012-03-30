@@ -31,6 +31,18 @@ class GroupsController < ApplicationController
       format.html { redirect_to @group }
     end
   end
+
+  def leave
+    @group = Group.find(params[:id]) 
+
+    if (@group.can_leave? current_user)
+      membership = @group.membership(current_user)
+      membership.destroy
+    end
+
+    redirect_to manage_groups_path
+  end
+
   # GET /groups/1
   # GET /groups/1.json
   def show

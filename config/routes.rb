@@ -10,6 +10,7 @@ InfoReminder::Application.routes.draw do
   match 'events(.:format)' => 'events#upcoming', :as => 'upcoming_events'
   match 'confirm/join/:id/(:invitation_hash)' => 'groups#confirm_join', :as => 'confirm_join_group'
   match 'join/:id/(:invitation_hash)' => 'groups#join', :as => 'join_group'
+  match 'leave/:id' => 'groups#leave', :as => 'leave_group'
   match 'setup/download' => 'setup#prepare', :as => 'prepare_setup'
   match 'setup/status/:id' => 'setup#status', :as => 'setup_status'
   match ':id/info-reminder-setup.exe' => 'setup#download', :as => 'download_setup'

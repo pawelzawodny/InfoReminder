@@ -55,7 +55,7 @@ class Group < ActiveRecord::Base
 
   # Checks whether user is member of this group
   def is_member?(user)
-    membership(user).user_id == user.id
+    (m = membership(user)) && m.user_id == user.id
   end
 
   # Alias for is_member?
@@ -95,12 +95,17 @@ class Group < ActiveRecord::Base
 
   # checks whether user can join this group
   def can_join?(user) 
-    self.public
+    self.public && membership(user).nil?
   end
 
   # alias for can_join?
   def can_join(user)
     can_join? user
+  end
+
+  # Checks whether user can leave this group
+  def can_leave?(user)
+    !membership(user).nil?
   end
 
   # Adds events category
