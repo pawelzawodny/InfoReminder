@@ -1,27 +1,10 @@
 <h1>Manage groups</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Public</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h3>Owned groups</h3>
+<%= render :partial => 'list', :locals => { groups: @groups[:owner] } %>
 
-<% @groups.each do |group| %>
-  <tr>
-    <td><%= group.name %></td>
-    <td><%= group.description %></td>
-    <td><%= group.public %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+<h3>Member of</h3>
+<%= render :partial => 'list', :locals => { groups: @groups[:member] } %>
 
-<br />
 
 <%= link_to 'New Group', new_group_path %>

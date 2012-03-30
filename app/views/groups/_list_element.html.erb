@@ -1,0 +1,22 @@
+<div class="group_list_element">
+  <p class="group_head">
+    <%= group.name %>
+  </p>
+  <p class="group_details">
+    <%= group.description %>
+  </p>
+  <p class="group_actions">
+    (
+    <% if group.can_read? current_user %>
+      <%= link_to 'Show events', group_events_path(group) %> |
+    <% end %>
+    <% if group.can_post_events? current_user %>
+      <%= link_to 'New event', new_group_event_path(group) %> |
+    <% end %>
+    <% if group.is_owner? current_user %>
+      <%= link_to 'Edit', edit_group_path(group) %> |
+      <%= link_to 'Destroy', group, confirm: 'Are you sure?', method: :delete %>
+    <% end %>
+    )
+  </p>
+</div>

@@ -13,8 +13,20 @@ class Group < ActiveRecord::Base
 
   # Finds groups which were created by user or user has joined as member
   def self.find_user_groups(user)
-    Group.includes(:memberships).
+    groups = Group.includes(:memberships).
     where('groups.user_id = ? OR memberships.user_id = ?', user.id, user.id)
+    
+  end
+
+  # Finds user groups categorised by membership type (groups in which user is member and owner)
+  def self.find_user_groups_categorised_by_membership(user)
+    groups = Group.find_user_groups(user).group_by do |g|
+      g.user_id == user.id ? :owner : :member 
+    end
+    groups[:owner] ||= Hash.new
+    groups[:member] ||= Hash.new
+
+    groups
   end
 
   # Finds groups which are readable for specified user
@@ -22,6 +34,61 @@ class Group < ActiveRecord::Base
     Group.find_user_groups(user).select do |g|
       g.user_id == user.id || g.membership.read || g.public
     end
+  end
+
+  # Returns first membership associated with this group
+  def membership
+    memberships.first
+  end
+
+  # Checks whether user is owner of this group
+  def is_owner?(user)
+    self.user_id == user.id 
+  end
+
+  # Alias for is_owner?
+  def is_owner(user)
+    is_owner? user
+  end
+
+  # Checks whether user is member of this group
+  def is_member?(user)
+    membership.user_id == user.id
+  end
+
+  # Alias for is_member?
+  def is_member(user) 
+    is_member? user
+  end
+
+  # Checks whether user can read events within this group
+  def can_read?(user)
+    self.public || is_owner?(user) || (is_member?(user) && membership.read)
+  end
+
+  # alias for can_read?
+  def can_read(user)
+    can_read? user
+  end
+
+  # Checks whether user can write to this group
+  def can_write?(user)
+    is_owner?(user) || (is_member?(user) && membership.write)
+  end
+
+  # alias for can_write?
+  def can_write(user)
+    can_write? user
+  end
+
+  # Checks whether user can post events within this group
+  def can_post_events?(user)
+    can_write? user
+  end
+
+  # alias for can_post_events?
+  def can_post_events(user)
+    can_post_events? user
   end
 
   # Adds events category

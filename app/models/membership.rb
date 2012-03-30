@@ -4,7 +4,7 @@ class Membership < ActiveRecord::Base
 
   def self.public(params)
     membership = Membership.new params
-    membership.read = false 
+    membership.read = true 
     membership.write = false
     membership.manage = false
     membership

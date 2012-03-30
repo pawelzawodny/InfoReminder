@@ -104,7 +104,7 @@ class GroupsController < ApplicationController
   end
 
   def manage
-    @groups = Group.find_user_groups(current_user)
+    @groups = Group.find_user_groups_categorised_by_membership(current_user)
     #@groups = Group.where( user_id: current_user.id ).all
     respond_to do |format|
       format.html 
