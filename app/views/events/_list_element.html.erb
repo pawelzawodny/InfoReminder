@@ -1,0 +1,14 @@
+<div class="event_list_element">
+  <p class="event_head">
+    <%= event.title %>
+    <span>
+      <%= event.date %>
+    <span>
+  </p>
+  <p class="event_details">
+    <%= event.description %>
+  </p>
+  <p class="event_tail">
+    within group <%= link_to event.group.name, group_events_path(event.group) %>
+  </p>
+</div>

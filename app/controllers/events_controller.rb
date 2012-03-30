@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     @events = Event.where(group_id: params[:group_id]).all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render 'browse', :locals => { events: @events } }
       format.json { render json: @events }
     end
   end
