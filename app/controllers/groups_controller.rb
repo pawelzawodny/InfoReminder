@@ -27,9 +27,7 @@ class GroupsController < ApplicationController
       @success = true
     end
 
-    respond_to do |format|
-      format.html { redirect_to @group }
-    end
+    redirect_to group_events_path(@group)
   end
 
   def leave
