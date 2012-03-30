@@ -1,29 +1,6 @@
-<h1>Listing groups</h1>
+<h1>Find groups</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>User</th>
-    <th>Public</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @groups.each do |group| %>
-  <tr>
-    <td><%= group.name %></td>
-    <td><%= group.description %></td>
-    <td><%= group.user_id %></td>
-    <td><%= group.public %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, confirm: 'Are you sure?', method: :delete %></td>
-    <td><%= link_to 'Join', confirm_join_group_path(group) %></td>
-  </tr>
-<% end %>
-</table>
+<%= render :partial => 'list', :locals => { groups: @groups } %>
 
 <br />
 
