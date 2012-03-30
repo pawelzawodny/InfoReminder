@@ -32,13 +32,15 @@ class Group < ActiveRecord::Base
   # Finds groups which are readable for specified user
   def self.find_readable_user_groups(user)
     Group.find_user_groups(user).select do |g|
-      g.user_id == user.id || g.membership.read || g.public
+      g.user_id == user.id || g.membership(user).read || g.public
     end
   end
 
-  # Returns first membership associated with this group
-  def membership
-    memberships.first
+  # Returns membership object associated with user
+  def membership(user)
+    memberships.find do |m|
+      m.user_id == user.id
+    end
   end
 
   # Checks whether user is owner of this group
@@ -53,7 +55,7 @@ class Group < ActiveRecord::Base
 
   # Checks whether user is member of this group
   def is_member?(user)
-    membership.user_id == user.id
+    membership(user).user_id == user.id
   end
 
   # Alias for is_member?
@@ -63,7 +65,7 @@ class Group < ActiveRecord::Base
 
   # Checks whether user can read events within this group
   def can_read?(user)
-    self.public || is_owner?(user) || (is_member?(user) && membership.read)
+    self.public || is_owner?(user) || (is_member?(user) && membership(user).read)
   end
 
   # alias for can_read?
@@ -73,7 +75,7 @@ class Group < ActiveRecord::Base
 
   # Checks whether user can write to this group
   def can_write?(user)
-    is_owner?(user) || (is_member?(user) && membership.write)
+    is_owner?(user) || (is_member?(user) && membership(user).write)
   end
 
   # alias for can_write?
@@ -89,6 +91,16 @@ class Group < ActiveRecord::Base
   # alias for can_post_events?
   def can_post_events(user)
     can_post_events? user
+  end
+
+  # checks whether user can join this group
+  def can_join?(user) 
+    self.public
+  end
+
+  # alias for can_join?
+  def can_join(user)
+    can_join? user
   end
 
   # Adds events category
