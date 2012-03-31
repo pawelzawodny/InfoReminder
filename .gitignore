@@ -19,3 +19,6 @@
 .*.swm
 #*#
 *~
+*.pid
+# Ignore sphinx data
+db/sphinx
