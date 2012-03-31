@@ -6,6 +6,13 @@ class Group < ActiveRecord::Base
   has_many :memberships
   has_many :invitations
 
+  # Sphinx search indexes
+  define_index do
+    indexes :name, sortable: true
+    indexes :description
+    has :public, :id
+  end
+
   # Finds groups which were created by user (only created by!)
   # See also find_user_groups
   def self.find_owned_user_groups(user)
@@ -35,6 +42,10 @@ class Group < ActiveRecord::Base
     Group.find_user_groups(user).select do |g|
       g.user_id == user.id || g.membership(user).read || g.public
     end
+  end
+
+  def self.search_public(query, *args)
+    Group.search(query, conditions: { public: true })
   end
 
   # Returns membership object associated with user
