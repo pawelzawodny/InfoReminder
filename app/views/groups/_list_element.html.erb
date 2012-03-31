@@ -23,6 +23,10 @@
     <% if group.can_leave? current_user %>
       <%= link_to 'Leave group', leave_group_path(group), confirm: 'Are you sure you want to leave this group?' %>
     <% end %>
+    <% if group.can_invite? current_user %>
+      <%= link_to 'Invite friends', invite_to_group_path({ group_id: group}) %>
+    <% end %>
+
     )
   </p>
 </div>

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :auth_tokens
   has_many :configuration_values
+  has_many :invitations
 
   #
   # Class methods

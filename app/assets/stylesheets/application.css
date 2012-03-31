@@ -21,3 +21,12 @@ div#credentials_information
   float: right;
   text-align: right;
 }
+
+input.copyable_text {
+  background-color: #FFFF66;
+
+  text-align: center;
+
+  width: 500px;
+  height: 20px;
+}

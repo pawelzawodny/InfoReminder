@@ -11,36 +11,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  # Action used to confirm that user wants to join this group
-  def confirm_join 
-    @group = Group.find(params[:id])
-
-    respond_to do |format|
-      format.html
-    end
-  end
-
-  def join
-    @group = Group.find(params[:id])
-
-    if @group.add_member(current_user)
-      @success = true
-    end
-
-    redirect_to group_events_path(@group)
-  end
-
-  def leave
-    @group = Group.find(params[:id]) 
-
-    if (@group.can_leave? current_user)
-      membership = @group.membership(current_user)
-      membership.destroy
-    end
-
-    redirect_to manage_groups_path
-  end
-
   # GET /groups/1
   # GET /groups/1.json
   def show

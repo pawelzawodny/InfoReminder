@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   has_many :group_categories
   has_many :users, :through => :membership, :as => :members
   has_many :memberships
+  has_many :invitations
 
   # Finds groups which were created by user (only created by!)
   # See also find_user_groups
@@ -83,6 +84,16 @@ class Group < ActiveRecord::Base
     can_write? user
   end
 
+  # Checks whether user can manage group
+  def can_manage?(user)
+    is_owner?(user) || (is_member?(user) && membership(user).manage)
+  end
+
+  # alias for can_manage?
+  def can_manage(user)
+    can_manage? user
+  end
+
   # Checks whether user can post events within this group
   def can_post_events?(user)
     can_write? user
@@ -94,18 +105,55 @@ class Group < ActiveRecord::Base
   end
 
   # checks whether user can join this group
-  def can_join?(user) 
-    self.public && membership(user).nil?
+  def can_join?(user, *args) 
+    options = args.first unless args.empty?
+    activation_code = options[:activation_code] unless options.nil?
+    (self.public || has_valid_invitation?(user, activation_code)) && membership(user).nil? && !is_owner(user)
   end
 
   # alias for can_join?
-  def can_join(user)
-    can_join? user
+  def can_join(user, *args)
+    can_join? user, *args
   end
 
   # Checks whether user can leave this group
   def can_leave?(user)
     !membership(user).nil?
+  end
+
+  def can_invite?(user)
+    is_owner(user) || can_manage?(user)
+  end
+
+  # Check whether user has invitation
+  def has_invitation?(user)
+    invitations.any? do |u|
+      u.user_id == user.id
+    end
+  end
+
+  # checks whether user has valid invitation to group
+  def has_valid_invitation?(user, code)
+    invitations.any? do |i|
+      i.user_id == user.id || (i.user_id.nil? && !code.nil? && i.activation_code == code)
+    end
+  end
+
+  # alias for has_valid_invitation?
+  def has_valid_invitation(user, code)
+    has_valid_invitation?(user,code)
+  end
+
+  # Alias for has_invitation?
+  def has_invitation(user)
+    has_invitation?(user)
+  end
+
+  # Gets invitation object for user
+  def invitation(user, code)
+    invitations.find do |i|
+      i.user_id == user.id || (!i.activation_code.nil? && i.activation_code == code)
+    end
   end
 
   # Adds events category
@@ -121,9 +169,13 @@ class Group < ActiveRecord::Base
   end
 
   # Adds user membership to group (Only if it's public group or user has invitation)
-  def add_member(user)
-    if self.public 
-      m = Membership.public({ 
+  def add_member(user, *args)
+    options = args.first unless args.empty?
+    activation_code = options[:activation_code] unless options.nil?
+
+    if self.public || has_valid_invitation(user, activation_code) 
+      i = invitation(user, activation_code).accepted = true unless !has_valid_invitation?(user, activation_code) 
+      m = Membership.new_read_only({ 
         group_id: id,
         user_id: user.id
       })
