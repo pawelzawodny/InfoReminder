@@ -51,7 +51,7 @@ class Group < ActiveRecord::Base
   # Returns membership object associated with user
   def membership(user)
     memberships.find do |m|
-      m.user_id == user.id
+      m.user_id == user.id && !m.destroyed?
     end
   end
 
@@ -67,7 +67,7 @@ class Group < ActiveRecord::Base
 
   # Checks whether user is member of this group
   def is_member?(user)
-    (m = membership(user)) && m.user_id == user.id
+    !(m = membership(user)).nil? 
   end
 
   # Alias for is_member?
@@ -190,7 +190,12 @@ class Group < ActiveRecord::Base
         group_id: id,
         user_id: user.id
       })
-      m.save
+      if m.save
+        memberships << m
+        true
+      else
+        false
+      end
     else
       false
     end

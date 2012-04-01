@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :auth_tokens
   has_many :configuration_values
   has_many :invitations
+  has_many :groups
+  has_many :events
 
   #
   # Class methods
