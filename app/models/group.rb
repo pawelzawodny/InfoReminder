@@ -64,7 +64,7 @@ class Group < ActiveRecord::Base
 
   # Checks whether user is owner of this group
   def is_owner?(user)
-    self.user_id == user.id 
+    user && self.user_id == user.id 
   end
 
   # Alias for is_owner?
@@ -74,7 +74,7 @@ class Group < ActiveRecord::Base
 
   # Checks whether user is member of this group
   def is_member?(user)
-    !(m = membership(user)).nil? 
+    user && !(m = membership(user)).nil? 
   end
 
   # Alias for is_member?

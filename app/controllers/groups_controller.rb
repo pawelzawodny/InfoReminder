@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :authenticate_user!, :except => [ :show ]
+  before_filter :authenticate_user!, :except => [ :show, :search ]
   # GET /groups
   # GET /groups.json
   def search
@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @groups }
+      format.js 
     end
   end
 
