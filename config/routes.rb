@@ -1,4 +1,5 @@
 InfoReminder::Application.routes.draw do
+  # Groups
   resources :groups do
     collection do 
       get :manage
@@ -6,6 +7,7 @@ InfoReminder::Application.routes.draw do
     resources :events
     resources :categories
   end
+  match 'search/(:query)/(:page)' => 'groups#search', :as => 'search_groups'
 
   # Invitations and membership management
   match 'invite(.:format)/:group_id/(:user_id)' => 'membership#invite', :as => 'invite_to_group'

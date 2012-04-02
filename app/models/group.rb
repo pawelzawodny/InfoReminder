@@ -13,6 +13,8 @@ class Group < ActiveRecord::Base
     has :public, :id
   end
 
+  GROUPS_PER_PAGE = 5
+
   # Finds groups which were created by user (only created by!)
   # See also find_user_groups
   def self.find_owned_user_groups(user)
@@ -44,8 +46,13 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def self.search_public(query, *args)
-    Group.search(query, conditions: { public: true })
+  def self.search_public(query, options)
+    options = options || Hash.new
+    options[:conditions] = { public: true }
+    options[:per_page] = GROUPS_PER_PAGE
+    options[:ignore_errors] = true
+
+    Group.search(query, options)
   end
 
   # Returns membership object associated with user

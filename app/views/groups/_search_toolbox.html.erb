@@ -1,0 +1,5 @@
+<%= form_tag search_groups_path, :method => :get do |f| %>
+  <%= label_tag 'query', 'Search' %>
+  <%= text_field_tag 'query', @query || 'Enter your query', { id: 'search_groups_text_input' }  %>
+<% end %>
+
