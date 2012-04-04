@@ -1,0 +1,28 @@
+<div id="middle">
+<div class="span-16 ">
+<%=  image_tag("slider.jpg",   :width => '620', :class => "slider_sample")	 %>
+	</div>
+<div class="span-8 last">
+	<div id="right_box">
+<h2>Sign in</h2>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :size => 15 %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password, :size => 15 %></div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+  <% end -%>
+
+  <div><%= f.submit "Sign in" %></div>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>						
+	
+</div>
+	</div>	
+</div>
+<%= render 'home/tips_bar' %>	

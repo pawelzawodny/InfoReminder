@@ -7,15 +7,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="user_menu">
-  <%= link_to 'Find groups', groups_path %>
-  <% if user_signed_in? %>
+
+<div class="container">
+	
+	
+    <div class="span-24">
+    	<div id="header">
+		<%= link_to 'infoReminder', root_url, :id=>'title_logo' %> 
+        
+      
+		
+	
+		<div id="top_menu">
+				<% if user_signed_in? %>
     <%= render partial: 'users/signed_in_menu' %>
   <% else %>
     <%= render partial: 'users/signed_out_menu' %>
   <% end %>
-</div>
+	</div>		
+    </div>
+	</div>
+	
 <%= yield %>
+
+
+    <div class="span-24">
+<div id="footer_bar">
+        Copyright 2012 infoReminder Apps Inc.
+
+    </div>
+</div>
+
+
+
 
 </body>
 </html>

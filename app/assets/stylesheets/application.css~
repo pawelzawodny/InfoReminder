@@ -1,0 +1,52 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+@font-face {
+	font-family: CaviarDreams;
+	src: url('CaviarDreams.ttf');
+}
+.container{
+	color: #6f6f6f;
+}
+div#user_menu 
+{
+  margin: 3px;
+  padding: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+
+}
+
+div#credentials_information
+{
+  float: right;
+  text-align: right;
+}
+
+#header {height: 100px; width:100%; color: #EDEDEF;  background-image: url("b1.jpg"); float:left; }
+#middle{color: #6f6f6f; min-height: 100px; width:100%; color: #EDEDEF;  background-image: url("b1.jpg"); float:left; border: solid #e4e4e4; border-width: 1px 0 0 0;}
+#header_inner { margin-bottom: 100px;}
+#title_logo{font-size:2.5em; color: #9b1109; font-family:CaviarDreams; padding: 5px 0 0 10px;}
+p#top_menu a{color:#505050; text-decoration:none;}
+.slider_sample{padding-left: 10px;}
+
+p#top_login a{color:#66b368; text-decoration:none; padding-left:50px;}
+
+#tips_bar {height:355px; width:100%; color: #EDEDEF;  background-image: url("b2.jpg"); float:left; }
+
+#slider img { width:900px; padding-top:40px;}
+#header_inner p{ display:block; float:left; text-align:right;}
+#footer_bar {color: #4B4B4C; height:80px; background:#424242}
+#footer_inner {padding:5px 0 5px 10px; }
+.step_box{margin-top:10px; height:310px; width:100%; color: #B9BABC;  background-image: url("box-bg.jpg"); float:left; }
+.step_2{ width:39px; height:94px; background-image: url("2.png"); background-repeat:no-repeat; float:left; margin:10px;}
+.text-box{ margin:10px; float:right;}
+.debug { border: 1px red dotted; }
+.clear {clear:both;}
+#space  {padding-bottom:40px;}
+.ramka{border: solid #FFF; border-width: 0 0 0 10px;}
