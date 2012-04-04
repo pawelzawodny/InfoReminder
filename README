@@ -4,12 +4,17 @@ I. About project
 It's application which solves problem of forgetting important things. All you need to do is to sign up to info groups which concerns you most. We will handle the rest. You will see notification for each event at specified date! 
 
 II. Running dev environment
+
+CONFIGURING WEB APPLICATION
+
 To run web application just enter following commands:
 1. bundle --path=~/.gems
 2. bundle exec rake db:migrate (or just rake db:migrate)
 3. rails s
 
 Application will start at tcp port 3000 by default
+
+CONFIGURING SETUP BUILDER SERVICE
 
 In order to configure personalised installers builder please do following steps:
 
@@ -53,7 +58,39 @@ On windows you'll need to append following line to C:\Windows\System32\drivers\e
 
 127.0.0.1 inforeminder
 
-III. Team members
+CONFIGURING SEARCH ENGINE
+
+In order to get search functionality working you need to follow instructions below.
+
+1. Install sphinx search engine
+
+Ubuntu:
+sudo apt-get install sphinxsearch
+
+2. Configure PostgreSQL or MySQL as development DB, since Sphinx can't work with sqlite
+
+Once you'll install postgresql you need to change config/database.yml
+
+here is example postgres configuration:
+
+development:
+  adapter: postgresql
+  database: inforeminder
+  username: inforeminder
+  password: inforeminder
+  pool: 5
+  timeout: 5000
+
+3. Run indexing daemon by runnin script "script/development_indexing.sh" xecuted from root path of application
+
+$ ./script/development_indexing.sh 
+searchd is not running
+Started successfully (pid 2604).
+indexing data
+
+4. Search feature is ready to use
+
+III.
 Wojtek Przebieracz
 Mateusz Skorb
 Mateusz Szygenda

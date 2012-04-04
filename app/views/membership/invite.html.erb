@@ -1,0 +1,5 @@
+<% if @invitation.is_anonymous? %>
+  <%= render :partial => 'anonymous_invitation', :locals => { :invitation => @invitation } %>
+<% else %>
+  <%= render :partial => 'user_invitation', :locals => { :invitation => @invitation } %>
+<% end %>

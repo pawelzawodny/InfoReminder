@@ -1,4 +1,5 @@
 InfoReminder::Application.routes.draw do
+  # Groups
   resources :groups do
     collection do 
       get :manage
@@ -6,16 +7,25 @@ InfoReminder::Application.routes.draw do
     resources :events
     resources :categories
   end
+  match 'search/(:query)/(:page)' => 'groups#search', :as => 'search_groups'
+
+  # Invitations and membership management
+  match 'invite(.:format)/:group_id/(:user_id)' => 'membership#invite', :as => 'invite_to_group'
+  match 'confirm/join/:id/(:activation_code)' => 'membership#confirm_join', :as => 'confirm_join_group'
+  match 'join/:id/(:activation_code)' => 'membership#join', :as => 'join_group'
+  match 'leave/:id' => 'membership#leave', :as => 'leave_group'
 
   match 'events(.:format)' => 'events#upcoming', :as => 'upcoming_events'
-  match 'confirm/join/:id/(:invitation_hash)' => 'groups#confirm_join', :as => 'confirm_join_group'
-  match 'join/:id/(:invitation_hash)' => 'groups#join', :as => 'join_group'
-  match 'leave/:id' => 'groups#leave', :as => 'leave_group'
+  
+  # Setup builder service
   match 'setup/download' => 'setup#prepare', :as => 'prepare_setup'
   match 'setup/status/:id' => 'setup#status', :as => 'setup_status'
   match ':id/info-reminder-setup.exe' => 'setup#download', :as => 'download_setup'
 
+  # Exposed api to third-party apps (like desktop app)
   match 'client/:action(.:format)/(:user_id/:auth_token)' => 'client'
+
+  # User profile rules
   match 'settings' => 'settings#show', :as => 'show_settings'
   match 'settings/:action(.:format)' => 'settings'
   devise_for :users

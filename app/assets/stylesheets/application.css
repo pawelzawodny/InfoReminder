@@ -6,3 +6,30 @@
  *= require_tree . 
 */
 
+<<<<<<< HEAD
+=======
+div#user_menu 
+{
+  margin: 3px;
+  padding: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+
+}
+
+div#credentials_information
+{
+  float: right;
+  text-align: right;
+}
+
+input.copyable_text {
+  background-color: #FFFF66;
+
+  text-align: center;
+
+  width: 500px;
+  height: 20px;
+}
+>>>>>>> bdfb36c673e7610b71ef0f2808731cc7ab32bd45

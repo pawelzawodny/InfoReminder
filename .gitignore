@@ -16,5 +16,9 @@
 .*.swp
 .*.swo
 .*.swn
+.*.swm
 #*#
 *~
+*.pid
+# Ignore sphinx data
+db/sphinx

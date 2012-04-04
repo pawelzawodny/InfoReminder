@@ -1,0 +1,4 @@
+<p class="success_confirmation">
+Invitation has been sent to the user <%= @invitation.user.email %>
+</p>
+<%= link_to 'Send another invitation', invite_to_group_path(group_id: @invitation.group_id) %> 
