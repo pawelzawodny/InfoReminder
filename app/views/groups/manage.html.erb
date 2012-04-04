@@ -1,18 +1,12 @@
 <div class="span-24 ">
-<div id="logged_middle">
-	<div id="logged_middle_inner">
-	
-<h1>Manage groups</h1>
+  <div id="logged_middle">
+    <div id="logged_middle_inner">
+      <h1>Manage groups</h1>
+      <h3>Owned groups</h3>
+      <%= render :partial => 'list', :locals => { groups: @groups[:owner] } %> <h3>Member of</h3>
+      <%= render :partial => 'list', :locals => { groups: @groups[:member] } %>
 
-<h3>Owned groups</h3>
-<%= render :partial => 'list', :locals => { groups: @groups[:owner] } %>
-
-<h3>Member of</h3>
-<%= render :partial => 'list', :locals => { groups: @groups[:member] } %>
-
-
-<%= link_to 'New Group', new_group_path %>
-
-</div>
-</div>
+      <%= link_to 'New Group', new_group_path %>
+    </div>
+  </div>
 </div>

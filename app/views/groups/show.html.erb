@@ -1,35 +1,28 @@
 <div class="span-24 ">
-<div id="logged_middle">
-	
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @group.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @group.description %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @group.user_id %>
-</p>
-
-<p>
-  <b>Public:</b>
-  <%= @group.public %>
-</p>
-
-
-<%= link_to 'New event', new_group_event_path(@group) %> |
-<%= link_to 'New event category', new_group_category_path(@group) %> |
-<%= link_to 'Show events', group_events_path(@group) %> |
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', search_groups_path %>
-
-</div>
+  <div id="logged_middle">
+    <p id="notice">
+      <%= notice %>
+    </p>
+    <p>
+      <b>Name:</b>
+      <%= @group.name %>
+    </p>
+    <p>
+      <b>Description:</b>
+      <%= @group.description %>
+    </p>
+    <p>
+      <b>User:</b>
+      <%= @group.user_id %>
+    </p>
+    <p>
+      <b>Public:</b>
+      <%= @group.public %>
+    </p>
+    <%= link_to 'New event', new_group_event_path(@group) %> |
+    <%= link_to 'New event category', new_group_category_path(@group) %> |
+    <%= link_to 'Show events', group_events_path(@group) %> |
+    <%= link_to 'Edit', edit_group_path(@group) %> |
+    <%= link_to 'Back', search_groups_path %>
+  </div>
 </div>
