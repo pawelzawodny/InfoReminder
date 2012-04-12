@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  description: MyText
+public_group:
+  name: Public group
+  description: This is public group
   user_id: 1
-  public: false
+  public: true
 
-two:
-  name: MyString
-  description: MyText
+private_group:
+  name: Private group
+  description: This is private group
   user_id: 1
   public: false

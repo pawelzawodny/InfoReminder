@@ -1,0 +1,11 @@
+<h1>Find groups</h1>
+<div id="search_groups_toolbox">
+  <%= render :partial => 'search_toolbox' %>
+</div>
+<div id="search_groups_results">
+  <%= render :partial => 'list', :locals => { groups: @groups } %>
+</div>
+<div id="search_pagination">
+  <%= will_paginate @groups %>
+</div>
+<%= link_to 'New Group', new_group_path %> 

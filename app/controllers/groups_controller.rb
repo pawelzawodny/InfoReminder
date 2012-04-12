@@ -1,13 +1,15 @@
 class GroupsController < ApplicationController
-  before_filter :authenticate_user!, :except => [ :show ]
+  before_filter :authenticate_user!, :except => [ :show, :search ]
   # GET /groups
   # GET /groups.json
-  def index
-    @groups = Group.where(public: true).all
+  def search
+    @query = params[:query] || ""
+    @page = params[:page] || 1
+    @groups = Group.search_public(@query, page: @page)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @groups }
+      format.js 
     end
   end
 

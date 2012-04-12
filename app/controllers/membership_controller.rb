@@ -1,4 +1,6 @@
 class MembershipController < ApplicationController
+  before_filter :authenticate_user!, :except => [ :confirm_join ]
+
   # Action used to confirm that user wants to join this group
   def confirm_join 
     @group = Group.find(params[:id])

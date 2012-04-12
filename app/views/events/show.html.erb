@@ -1,24 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @event.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @event.description %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @event.date %>
-</p>
-
-<p>
-  <b>Group:</b>
-  <%= @event.group %>
-</p>
-
-
-<%= link_to 'Edit', edit_group_event_path(@event.group_id, @event.id) %> 
+<div class="span-24 ">
+  <div id="logged_middle">
+    <div id="logged_middle_inner">
+      <p id="notice">
+        <%= notice %>
+      </p>
+      <p>
+        <b>Title:</b>
+        <%= @event.title %>
+      </p>
+      <p>
+        <b>Description:</b>
+        <%= @event.description %>
+      </p>
+      <p>
+        <b>Date:</b>
+        <%= @event.date %>
+      </p>
+      <p>
+        <b>Group:</b>
+        <%= @event.group %>
+      </p>
+      <%= link_to 'Edit', edit_group_event_path(@event.group_id, @event.id) %>
+    </div>
+  </div>
+</div>

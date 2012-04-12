@@ -1,7 +1,11 @@
-<h1>Event browser</h1>
-
-<%= render :partial => 'list', :locals => { events: events } %>
-
-<div id="event_calendar">
-  <%= render :partial => 'calendar' %>
+<div class="span-24 ">
+  <div id="logged_middle">
+    <div id="logged_middle_inner">
+      <h1>Event browser</h1>
+      <%= render :partial => 'list', :locals => { events: events } %>
+      <div id="event_calendar">
+        <%= render :partial => 'calendar' %>
+      </div>
+    </div>
+  </div>
 </div>
