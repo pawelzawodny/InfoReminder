@@ -5,6 +5,7 @@ class Group < ActiveRecord::Base
   has_many :users, :through => :membership, :as => :members
   has_many :memberships
   has_many :invitations
+  belongs_to :user
 
   # Sphinx search indexes
   define_index do
