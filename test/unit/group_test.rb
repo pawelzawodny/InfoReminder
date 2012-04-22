@@ -44,9 +44,10 @@ class GroupTest < ActiveSupport::TestCase
 
   test 'add_event_in_owned_group' do
     user = users(:one)
-    group = user.groups.new({ name: 'group name', description: 'description', public: false })
-    event = group.events.new({ title: 'event name', description: 'description', user_id: user.id })
+    group = user.groups.create({ name: 'group name', description: 'description', public: false })
+    event = group.events.new({ date: Time.now, title: 'event name', description: 'description', user_id: user.id })
 
+    group.save
     assert(group.save, "Can't save group")
     assert_not_nil(event, "Can't create event object") 
     assert(event.save, "Can't save event") 
