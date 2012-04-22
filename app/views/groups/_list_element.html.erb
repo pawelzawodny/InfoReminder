@@ -8,7 +8,7 @@
   <p class="group_actions">
     (
     <% if group.can_read? current_user %>
-      <%= link_to 'Show events', group_events_path(group) %> |
+      <%= link_to 'Show events', browse_events_path({ group_id: group.id }) %> |
     <% end %>
     <% if group.can_post_events? current_user %>
       <%= link_to 'New event', new_group_event_path(group) %> |

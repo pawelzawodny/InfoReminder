@@ -42,14 +42,21 @@ Events.EventBrowser.getEndDate = function () {
 }
 
 Events.EventBrowser.getGroupId = function () {
-  return "";
+  return $("#group_id", this.form).val(); 
 }
 
 Events.EventBrowser.getBrowseUrl = function (startDate, endDate, groupId) {
+  var url;
+
   startDate = this.transformDate(startDate);
   endDate = this.transformDate(endDate);
+  url = "/browse/";
+  
+  if (typeof groupId !== 'undefined' && groupId.length > 0) {
+    url += "g/" + groupId + "/";
+  }
 
-  return "/browse/" + startDate + "/to/" + endDate;
+  return url + startDate + "/to/" + endDate;
 }
 
 Events.EventBrowser.transformDate = function (date) {

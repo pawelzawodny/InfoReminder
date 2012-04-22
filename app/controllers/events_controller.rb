@@ -21,6 +21,10 @@ class EventsController < ApplicationController
       @period[:end_date]
     ) 
 
+    unless params[:group_id].nil?
+      @events = @events.where(group_id: params[:group_id])
+    end
+
     respond_to do |format|
       format.html { render 'browse', :locals => { events: @events } }
       format.js  

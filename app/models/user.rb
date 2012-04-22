@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     Event.find_user_events_within_period(self, days_to_event.days.ago, Time.now)
   end
 
+  def readable_groups
+    Group.find_readable_user_groups(self)
+  end
+
   def configuration
     @config ||= Configuration.get_configuration_for_user(self)
   end
