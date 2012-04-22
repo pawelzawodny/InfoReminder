@@ -1,0 +1,6 @@
+Events.EventList.hide();
+Events.EventList.clear();
+<% @events.each do |e| %>
+Events.EventList.add("<%=j render :partial => 'list_element', :locals => { event: e } %>");
+<% end %>
+Events.EventList.show();

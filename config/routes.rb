@@ -15,7 +15,10 @@ InfoReminder::Application.routes.draw do
   match 'join/:id/(:activation_code)' => 'membership#join', :as => 'join_group'
   match 'leave/:id' => 'membership#leave', :as => 'leave_group'
 
+  # Events
+  period_string = '(:year_start/:month_start/:day_start/(to/:year_end/:month_end/:day_end))'
   match 'events(.:format)' => 'events#upcoming', :as => 'upcoming_events'
+  match "events/(g/:group_id)/#{period_string}" => 'events#browse'
   
   # Setup builder service
   match 'setup/download' => 'setup#prepare', :as => 'prepare_setup'

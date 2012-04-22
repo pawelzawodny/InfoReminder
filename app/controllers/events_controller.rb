@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!
 
   def upcoming 
-    @events = Event.find_user_events(current_user)
+    @events = current_user.upcoming_events #Event.find_user_events(current_user)
 
     respond_to do |format|
       format.html
@@ -13,8 +13,13 @@ class EventsController < ApplicationController
 
   # GET /events
   # GET /events.json
-  def index
-    @events = Event.where(group_id: params[:group_id]).all
+  def browse
+    period = get_period_from_params
+    @events = Event.find_user_events_within_period(
+      current_user,
+      period[:start_date],
+      period[:end_date]
+    ) 
 
     respond_to do |format|
       format.html { render 'browse', :locals => { events: @events } }
@@ -91,5 +96,36 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url }
       format.json { head :ok }
     end
+  end
+  
+  private
+  def get_period_from_params
+    period = Hash.new
+
+    if start_date_present?
+      period[:start_date] = Time.new(
+        params[:year_start], 
+        params[:month_start], 
+        params[:day_start]
+      )
+    end
+
+    if end_date_present?
+      period[:end_date] = Time.new(
+        params[:year_end],
+        params[:month_end],
+        params[:day_end]
+      )
+    end
+
+    period
+  end
+
+  def start_date_present?
+    !params[:year_start].nil? && !params[:month_start].nil? && !params[:day_start].nil?
+  end
+
+  def end_date_present?
+    !params[:year_end].nil? && !params[:month_end].nil? && !params[:day_end].nil?
   end
 end
