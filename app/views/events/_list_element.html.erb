@@ -9,6 +9,6 @@
     <%= event.description %>
   </p>
   <p class="event_tail">
-    within group <%= link_to event.group.name, group_events_path(event.group) %>
+    within group <%= link_to event.group.name, browse_events_path(group_id: event.group.id) %>
   </p>
 </div>
