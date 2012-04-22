@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  layout :pick_layout
 
   # Fetches group object from database and makes it accessible in views through @group
   def fetch_group
@@ -12,6 +13,15 @@ class ApplicationController < ActionController::Base
       if(!auth.nil?)
         @current_user = auth.user
       end
+    end
+  end
+  
+  private
+  def pick_layout
+    if params[:nolayout] == 'true'
+      false
+    else
+      'application'
     end
   end
 end
