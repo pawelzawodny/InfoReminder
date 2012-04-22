@@ -1,1 +1,13 @@
-Here is calendar used to browse events
+<div id="browse_ui">
+  <%= form_tag browse_events_path, :id => 'browse_events_form' do %>
+    <div class="field">
+      <%= date_picker("date_start", @period[:start_date]) %>
+    </div>
+    <div class="field">
+      <%= date_picker("date_end", @period[:end_date]) %>
+    </div>
+    <div class="actions">
+      <%= submit_tag "Filter" %>
+    </div>
+  <% end %>
+</div>

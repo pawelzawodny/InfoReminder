@@ -17,8 +17,8 @@ InfoReminder::Application.routes.draw do
 
   # Events
   period_string = '(:year_start/:month_start/:day_start/(to/:year_end/:month_end/:day_end))'
-  match 'events(.:format)' => 'events#upcoming', :as => 'upcoming_events'
-  match "events/(g/:group_id)/#{period_string}" => 'events#browse'
+  match 'upcoming(.:format)' => 'events#upcoming', :as => 'upcoming_events'
+  match "browse/(g/:group_id)/#{period_string}" => 'events#browse', :as => 'browse_events'
   
   # Setup builder service
   match 'setup/download' => 'setup#prepare', :as => 'prepare_setup'

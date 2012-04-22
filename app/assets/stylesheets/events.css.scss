@@ -4,7 +4,10 @@
 $eventListWidth: 50%;
 
 div#event_list {
+  float: left;
+
   width: $eventListWidth;
+
   div.event_list_element {
     p.event_head {
       font-weight: bold;
@@ -14,4 +17,10 @@ div#event_list {
       text-align: right;
     }
   }
+}
+
+div#event_calendar {
+}
+
+div#browse_ui {
 }

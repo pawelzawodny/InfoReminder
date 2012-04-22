@@ -14,15 +14,16 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def browse
-    period = get_period_from_params
+    @period = get_period_from_params
     @events = Event.find_user_events_within_period(
       current_user,
-      period[:start_date],
-      period[:end_date]
+      @period[:start_date],
+      @period[:end_date]
     ) 
 
     respond_to do |format|
       format.html { render 'browse', :locals => { events: @events } }
+      format.js  
       format.json { render json: @events }
     end
   end
@@ -102,30 +103,54 @@ class EventsController < ApplicationController
   def get_period_from_params
     period = Hash.new
 
-    if start_date_present?
-      period[:start_date] = Time.new(
-        params[:year_start], 
-        params[:month_start], 
-        params[:day_start]
-      )
+    if has_start_date?
+      period[:start_date] = get_date_from_params "start"
     end
 
-    if end_date_present?
-      period[:end_date] = Time.new(
-        params[:year_end],
-        params[:month_end],
-        params[:day_end]
-      )
+    if has_end_date?
+      period[:end_date] = get_date_from_params "end"
     end
 
     period
   end
 
-  def start_date_present?
-    !params[:year_start].nil? && !params[:month_start].nil? && !params[:day_start].nil?
+  def get_date_from_params(name)
+    if has_date?(name)
+      has_partial_date(name) ? get_date_from_parts(name) : get_date_from_single_param(name)
+    else
+      nil
+    end
   end
 
-  def end_date_present?
-    !params[:year_end].nil? && !params[:month_end].nil? && !params[:day_end].nil?
+  def get_date_from_single_param(name)
+    Time.parse params["date_#{name}"]
+  end
+
+  def get_date_from_parts(name)
+   Time.new(
+        params["year_#{name}"],
+        params["month_#{name}"],
+        params["day_#{name}"]
+      )
+  end
+
+  def has_partial_date(name)
+    (!params["year_#{name}"].nil? && !params["month_#{name}"].nil? && !params["day_#{name}"].nil?) 
+  end
+
+  def has_single_date(name)
+    !params["date_#{name}"].nil?
+  end
+
+  def has_date?(name)
+    has_partial_date(name) || has_single_date(name)
+  end
+
+  def has_start_date?
+    has_date? "start"
+  end
+
+  def has_end_date?
+    has_date? "end"
   end
 end
