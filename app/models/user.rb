@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   #
   def upcoming_events
     days_to_event = configuration['events.notification_interval'].value.to_i
-    Event.find_user_events_within_period(self, days_to_event.days.ago, Time.now)
+    Event.find_user_events_within_period(self, Time.now, days_to_event.days.from_now)
   end
 
   def readable_groups
