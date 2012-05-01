@@ -1,5 +1,8 @@
-<% if @invitation.is_anonymous? %>
-  <%= render :partial => 'anonymous_invitation', :locals => { :invitation => @invitation } %>
-<% else %>
-  <%= render :partial => 'user_invitation', :locals => { :invitation => @invitation } %>
-<% end %>
+<div>
+  <% if @invitation.is_anonymous? %>
+    <%= render :partial => 'anonymous_invitation', :locals => { :invitation => @invitation } %>
+  <% else %>
+    <%= render :partial => 'user_invitation', :locals => { :invitation => @invitation } %>
+  <% end %>
+</div>
+Go to <%= link_to 'Group list', manage_groups_path %>

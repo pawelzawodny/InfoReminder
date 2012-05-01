@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!
 
   def upcoming 
-    @events = current_user.upcoming_events #Event.find_user_events(current_user)
+    @events = current_user.upcoming_events 
 
     respond_to do |format|
       format.html
@@ -66,7 +66,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to [@group, @event], notice: 'Event was successfully created.' }
+        format.html { redirect_to browse_events_path(group_id: @event.group_id), notice: 'Event was successfully created.' }
         format.json { render json: @event, status: :created, location: @event }
       else
         format.html { render action: "new" }
@@ -82,7 +82,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to manage_groups_url, notice: 'Event was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -98,7 +98,7 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to events_url }
+      format.html { redirect_to [@event.group, @event]}
       format.json { head :ok }
     end
   end

@@ -26,7 +26,7 @@ class MembershipController < ApplicationController
       @success = true
     end
 
-    redirect_to group_events_path(@group)
+    redirect_to browse_events_path(group_id: @group.id)
   end
 
   # Action used to leave group
