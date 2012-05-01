@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   def accept_notifications_for_events(event_ids)
     events = Event.find_user_events(self).where('events.id' => event_ids) 
     events.each do |e|
-      e.accept_notification_as(user)
+      e.accept_notification_as(self)
     end
   end
 

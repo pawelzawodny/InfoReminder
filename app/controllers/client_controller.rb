@@ -50,7 +50,7 @@ class ClientController < ApplicationController
   end
 
   def accept_notifications
-    current_user.accept_notifications(params[:event_ids])
+    current_user.accept_notifications_for_events(params[:event_ids])
   end
 
   def groups
