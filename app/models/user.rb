@@ -29,11 +29,18 @@ class User < ActiveRecord::Base
   #
   def upcoming_events
     days_to_event = configuration['events.notification_interval'].value.to_i
-    Event.find_user_events_within_period(self, Time.now, days_to_event.days.from_now)
+    Event.find_user_events_within_period_without_accepted_notifications(self, Time.now, days_to_event.days.from_now)
   end
 
   def readable_groups
     Group.find_readable_user_groups(self)
+  end
+
+  def accept_notifications_for_events(event_ids)
+    events = Event.find_user_events(self).where('events.id' => event_ids) 
+    events.each do |e|
+      e.accept_notification_as(user)
+    end
   end
 
   def configuration

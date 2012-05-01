@@ -49,6 +49,10 @@ class ClientController < ApplicationController
     end
   end
 
+  def accept_notifications
+    current_user.accept_notifications(params[:event_ids])
+  end
+
   def groups
     groups = Group.find_readable_user_groups(@current_user)
 

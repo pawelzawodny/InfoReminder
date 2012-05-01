@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :group
   belongs_to :category
+  has_many :accepted_notifications
 
   validates_presence_of :title, :date, :group_id
 
@@ -18,6 +19,14 @@ class Event < ActiveRecord::Base
 
   def can_delete?(user)
     is_owner?(user) || group.can_manage?(user)
+  end
+
+  def has_accepted_notification_as(user)
+    !AcceptedNotification.where(event_id: self.id, user_id: user.id).first.nil?
+  end
+
+  def accept_notification_as(user)
+    AcceptedNotification.create(user_id: user.id, event_id: self.id, date: Time.now)
   end
 
   # Returns query used to find events available to specified user
@@ -47,6 +56,19 @@ class Event < ActiveRecord::Base
       }
     )
   end
+
+  def self.find_user_events_within_period_without_accepted_notifications(user, start_date, end_date)
+    accepted_event_ids = AcceptedNotification.notifications_for_user(user).map do |n|
+      n.event_id
+    end 
+    query = self.find_user_events_within_period(user, start_date, end_date)
+    if accepted_event_ids.length > 0
+      query = query.where('events.id NOT IN (?)', accepted_event_ids)
+    end
+
+    query
+  end
+
 
   private
 
