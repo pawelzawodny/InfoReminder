@@ -22,3 +22,6 @@
 *.pid
 # Ignore sphinx data
 db/sphinx
+
+# Git tmp files
+*.orig
