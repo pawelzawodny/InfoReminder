@@ -7,4 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require history-min
+//= require noreload
+//= require ir-noreload
 //= require_tree .
