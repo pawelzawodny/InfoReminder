@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_filter :fetch_group 
+  before_filter :authenticate_user!
 
   def new
     @category = @group.categories.new
