@@ -33,4 +33,14 @@ div#setup {
       display: none;
     } 
   }
+
+  &.error {
+    p {
+      color: red;
+    }
+
+    div.big_loading_bar {
+      display: none;
+    }
+  }
 }

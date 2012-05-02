@@ -10,7 +10,7 @@ apps:
     destination_path: /tmp/setup_execs
     temp_path: /tmp/tmp_build
     options:
-      install_creator_exec: xvfb-run -w 0 wine /tmp/ic/ic.exe
+      install_creator_exec: timeout 10s xvfb-run -w 0 -a wine /tmp/ic/ic.exe
       config_file: client/info-reminder-client.exe.config
       project_file: setup.iit
       root_drive: 'Z:'
