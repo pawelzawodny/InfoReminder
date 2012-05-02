@@ -15,7 +15,7 @@ class Configuration < ActiveRecord::Base
       val = values.find do |v|
         v.configuration_id == k.id
       end
-      val ||= ConfigurationValue.new(user_id: user.id, configuration_id: k.id) 
+      val ||= ConfigurationValue.new(user_id: user.id, configuration_id: k.id, value: k.default) 
 
       config = k.clone
       config.configuration_value = val
