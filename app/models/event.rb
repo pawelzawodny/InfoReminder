@@ -51,8 +51,8 @@ class Event < ActiveRecord::Base
     query.where(
       where, 
       { 
-        start_date: start_date, 
-        end_date: end_date
+        start_date: start_date.midnight, 
+        end_date: end_date.midnight
       }
     )
   end

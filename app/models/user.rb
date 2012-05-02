@@ -29,6 +29,11 @@ class User < ActiveRecord::Base
   #
   def upcoming_events
     days_to_event = configuration['events.notification_interval'].value.to_i
+    Event.find_user_events_within_period(self, Time.now, days_to_event.days.from_now)
+  end
+
+  def events_with_unaccepted_notifications
+    days_to_event = configuration['events.notification_interval'].value.to_i
     Event.find_user_events_within_period_without_accepted_notifications(self, Time.now, days_to_event.days.from_now)
   end
 
