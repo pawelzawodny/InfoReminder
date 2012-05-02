@@ -23,7 +23,7 @@ Groups.Search.addSearchRecord = function (record) {
   this.searchResult.append(record);
 }
 
-Groups.search.executeQuery = function (query, page, callback) {
+Groups.Search.executeQuery = function (query, page, callback) {
   $.ajax(this.serviceUrl, {
     params: {
       query: query,
@@ -33,7 +33,7 @@ Groups.search.executeQuery = function (query, page, callback) {
   });
 }
 
-Groups.search.queryHandler = function (data) {
+Groups.Search.queryHandler = function (data) {
   eval(data); 
 }
 
