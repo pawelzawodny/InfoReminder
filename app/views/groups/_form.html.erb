@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, 'data-tooltip' => 'Enter short name of new group i.e. UG Inf Students 2009' %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, 'data-tooltip' => 'Brief description of group i.e. Events for students of computer science on UG' %>
   </div>
  <div class="field">
     <%= f.label :public %><br />
-    <%= f.check_box :public %>
+    <%= f.check_box :public, 'data-tooltip' => 'Determines whether other users can join this group without prior invitation' %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -11,7 +11,7 @@ Utils.initializeCopyableInputs = function () {
 }
 
 Utils.initializeTooltips = function () {
-  $('[data-tooltip]').tipsy({fade: true, gravity: 'n', title: 'data-tooltip'});
+  $('[data-tooltip]').tipsy({fade: true, gravity: 'nw', title: 'data-tooltip'});
 }
 
 $(document).ready(function () {
