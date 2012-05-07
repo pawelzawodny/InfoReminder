@@ -4,10 +4,11 @@
     <div id="right_box_panel">
       <div id="right_box_panel_inner">
         <h1>Event browser</h1>
-        <%= render :partial => 'list', :locals => { events: events } %>
-        
         <div id="event_calendar">
           <%= render :partial => 'calendar' %>
+        </div>
+        <div id="event-left">
+        <%= render :partial => 'list', :locals => { events: events } %>
         </div>
       </div>
     </div>

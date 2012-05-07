@@ -74,5 +74,12 @@ p#top_login a{color:#66b368; text-decoration:none; padding-left:50px;}
 #logged_middle_inner h1 {font-family:DejaVuSans; font-size:2em; color:#C69E3C; padding:10px 5px 5px 0; opacity:0.8 }
 #space  {padding-bottom:40px;}
 .ramka{border: solid #FFF; border-width: 0 0 0 10px;}
-#left-menu {min-height: 600px; width:100%; color: #EDEDEF;  background-image: url("left-menu.png"); background-repeat:repeat-x;}.event_list_element{margin-bottom:30px; padding:5px; background-color: #E6E7F2; border: solid #FFF; border-width: 1px; text-align:justify;}
+#left-menu {min-height: 600px; width:100%; color: #EDEDEF;  background-image: url("left-menu.png"); background-repeat:repeat-x;}
+.event_list_element{margin-bottom:30px; padding:5px; background-color: #E6E7F2; border: solid #FFF; border-width: 1px; text-align:justify;}
 p.event_head{font-family:DejaVuSans; font-size:1.0em; background-color: #56A6D1; color:white; padding:5px; }
+.field{display:inline; width:50px;}
+.actions{display:inline;}
+input#date_start{margin-left:5px; width:80px;}
+input#date_end{margin-left:5px; width:80px;}
+#browse_ui{margin-bottom:30px;}
+
