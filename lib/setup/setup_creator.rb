@@ -37,9 +37,13 @@ class SetupCreator
     setup_path = generate_setup_path
     builder.build(@temp_path, setup_path);
 
-    setup_path
+    if File::exists?(setup_path)
+      setup_path
+    else
+      nil
+    end
   end
-  
+
   # Removes temporary directory
   def clean
     FileUtils.remove_entry_secure(@temp_path)

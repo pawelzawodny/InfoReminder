@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, 'data-tooltip' => 'Short name of event i.e. Math Exam' %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :date %><br />
-    <%= f.text_field :date, :class => 'datepicker' %>
+    <%= f.text_field :date, :class => 'datepicker', 'data-tooltip' => 'Date when this event occurs' %>
   </div>
   <div class="actions">
     <%= f.submit %>

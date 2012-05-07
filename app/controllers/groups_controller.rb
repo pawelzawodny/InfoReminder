@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :authenticate_user!, :except => [ :show, :search ]
+  before_filter :authenticate_user!, :except => [ :search ]
   # GET /groups
   # GET /groups.json
   def search

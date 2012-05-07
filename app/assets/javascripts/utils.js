@@ -10,6 +10,11 @@ Utils.initializeCopyableInputs = function () {
   copyableInputs.attr('readonly', 'true');
 }
 
+Utils.initializeTooltips = function () {
+  $('[data-tooltip]').tipsy({fade: true, gravity: 'nw', title: 'data-tooltip'});
+}
+
 $(document).ready(function () {
   Utils.initializeCopyableInputs();
+  Utils.initializeTooltips();
 })

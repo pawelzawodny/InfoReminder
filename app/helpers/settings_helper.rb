@@ -1,6 +1,6 @@
 module SettingsHelper
   def text_configuration_field(config)
-    text_field_tag config.name, config.value 
+    text_field_tag config.name, config.value, { 'data-tooltip' => config.description}
   end
 
   def configuration_field(config)

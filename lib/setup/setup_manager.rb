@@ -13,6 +13,7 @@ class SetupManager
   IN_PROGRESS_STATUS = 'in_progress'
   READY_STATUS = 'ready'
   AWAITING_STATUS = 'awaiting'
+  ERROR_STATUS = 'error'
   
   def load_config
     config_path = File.dirname(__FILE__) + "/config/config.yml";
@@ -43,44 +44,52 @@ class SetupManager
 
   def build_setup(app)
     info "Setup build started", app
+    begin 
+      app.status = IN_PROGRESS_STATUS
+      app.save
+      app_name = "desktop"
+      app_config = config['apps'][app_name]
+      builder = app_config['builder'].constantize.new
+      configurator = app_config['configurator'].constantize.new
 
-    app.status = IN_PROGRESS_STATUS
-    app.save
-    app_name = "desktop"
-    app_config = config['apps'][app_name]
-    builder = app_config['builder'].constantize.new
-    configurator = app_config['configurator'].constantize.new
+      options = app_config['options']
+      builder.options = options
+      configurator.options = options
 
-    options = app_config['options']
-    builder.options = options
-    configurator.options = options
+      creator = SetupCreator.new
+      creator.builder = builder
+      creator.configurator = configurator
+      creator.config = app_config
 
-    creator = SetupCreator.new
-    creator.builder = builder
-    creator.configurator = configurator
-    creator.config = app_config
+      creator.copy_template
+      creator.configure_setup(
+      {
+        credentials: { 
+          user_id: app.auth_token.user_id,
+          username: 'test',
+          auth_token: app.auth_token.token
+        } 
+      })
+      
+      info "Application configured", app
 
-    creator.copy_template
-    creator.configure_setup(
-    {
-      credentials: { 
-        user_id: app.auth_token.user_id,
-        username: 'test',
-        auth_token: app.auth_token.token
-      } 
-    })
-    
-    info "Application configured", app
+      app.setup_path = creator.build_setup
 
-    app.setup_path = creator.build_setup
+      info "Application built", app
 
-    info "Application built", app
+      creator.clean
 
-    creator.clean
+      if !app.setup_path.nil?
+        app.status = READY_STATUS
+      else
+        app.status = ERROR_STATUS
+      end
 
-    app.status = READY_STATUS
-    app.save
-
+      app.save
+    rescue 
+      app.status = ERROR_STATUS
+      app.save
+    end  
     info "Task complete", app
   end
 
