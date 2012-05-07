@@ -1,13 +1,15 @@
-<div class="span-24 ">
-  <div id="logged_middle">
-    <div id="logged_middle_inner">
-      <h1>Download your aplication</h1>
-      <div id="setup" data-application-id="<%= @app.id %>" class="loading">
-        <div class="big_loading_bar"></div>
-        <p id="status_info">
-          Preparing your application, please wait...
-        </p>
+<div id="middle-panel">
+  <%= render :template => 'layouts/panel-menu' %>
+  <div class="span-18 last">
+    <div id="right_box_panel">
+      <div id="right_box_panel_inner">
+        <h1>Download your aplication</h1>
+        <div id="setup" data-application-id="<%= @app.id %>" class="loading">
+          <div class="big_loading_bar"></div>
+          <p id="status_info">
+            Preparing your application, please wait...
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>

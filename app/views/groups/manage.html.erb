@@ -1,12 +1,17 @@
-<div class="span-24 ">
-  <div id="logged_middle">
-    <div id="logged_middle_inner">
-      <h1>Manage groups</h1>
-      <h3>Owned groups</h3>
-      <%= render :partial => 'list', :locals => { groups: @groups[:owner] } %> <h3>Member of</h3>
-      <%= render :partial => 'list', :locals => { groups: @groups[:member] } %>
+<div id="middle-panel">
+  <%= render :template => 'layouts/panel-menu' %>
+  <div class="span-18 last">
+    <div id="right_box_panel">
+      <div id="right_box_panel_inner">
+        <h1>Manage groups</h1>
+        <h3>Owned groups</h3>
+        <div class="inside_box_panel"><%= render :partial => 'list', :locals => { groups: @groups[:owner] } %> </div>
+        
+        <h3>Member of</h3>
+        <div class="inside_box_panel"><%= render :partial => 'list', :locals => { groups: @groups[:member] } %></div>
 
-      <%= link_to 'New Group', new_group_path %>
+        <%= link_to 'New Group', new_group_path %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,9 +1,13 @@
-<div class="span-24 ">
-  <div id="logged_middle">
-    <h1>New group</h1>
-    <%= render 'form' %>
+<div id="middle-panel">
+  <%= render :template => 'layouts/panel-menu' %>
+  <div class="span-18 last">
+    <div id="right_box_panel">
+      <div id="right_box_panel_inner">
+        <h1>New group</h1>
+        <%= render 'form' %>
 
-    <%= link_to 'Back', groups_path %>
+        <%= link_to 'Back', groups_path %>
+      </div>
+    </div>
   </div>
 </div>
-<%= link_to 'Back', search_groups_path %> 

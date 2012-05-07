@@ -1,13 +1,16 @@
-<div class="span-24 ">
-  <div id="logged_middle">
-    <div id="logged_middle_inner">
-      <h1> Your settings </h1>
-      <%= form_tag({ :controller => 'settings', :action => 'save' }, :method => 'post') do |f| %>
-      <% current_user.configuration.each do |name, config| %>
-      <%= render :partial => 'configuration_field', :locals => { :config => config } %>
-      <% end %>
-      <%= submit_tag("Save") %>
-      <% end %>
+<div id="middle-panel">
+  <%= render :template => 'layouts/panel-menu' %>
+  <div class="span-18 last">
+    <div id="right_box_panel">
+      <div id="right_box_panel_inner">
+        <h1> Your settings </h1>
+        <%= form_tag({ :controller => 'settings', :action => 'save' }, :method => 'post') do |f| %>
+        <% current_user.configuration.each do |name, config| %>
+        <%= render :partial => 'configuration_field', :locals => { :config => config } %>
+        <% end %>
+        <%= submit_tag("Save") %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

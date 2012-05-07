@@ -1,8 +1,17 @@
-<div>
-  <% if @invitation.is_anonymous? %>
-    <%= render :partial => 'anonymous_invitation', :locals => { :invitation => @invitation } %>
-  <% else %>
-    <%= render :partial => 'user_invitation', :locals => { :invitation => @invitation } %>
-  <% end %>
+<div id="middle-panel">
+  <%= render :template => 'layouts/panel-menu' %>
+  <div class="span-18 last">
+    <div id="right_box_panel">
+      <div id="right_box_panel_inner">
+        <div>
+          <% if @invitation.is_anonymous? %>
+          <%= render :partial => 'anonymous_invitation', :locals => { :invitation => @invitation } %>
+          <% else %>
+          <%= render :partial => 'user_invitation', :locals => { :invitation => @invitation } %>
+          <% end %>
+        </div>
+        Go to <%= link_to 'Group list', manage_groups_path %>
+      </div>
+    </div>
+  </div>
 </div>
-Go to <%= link_to 'Group list', manage_groups_path %>
