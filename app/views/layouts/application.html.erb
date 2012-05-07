@@ -7,6 +7,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <div id="loading_bar">Please wait, page is loaded</div>
     <div class="container">
       <div class="span-24">
         <div id="header">
@@ -24,7 +25,9 @@
           </div>
         </div>
       </div>
-      <%= yield %>
+      <div id="content">
+        <%= yield %>
+      </div>
       <div class="span-24">
         <div id="footer_bar">
           Copyright 2012 infoReminder Apps Inc.

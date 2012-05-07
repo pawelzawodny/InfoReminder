@@ -30,3 +30,25 @@ input.copyable_text {
   width: 500px;
   height: 20px;
 }
+
+div#loading_bar {
+  position: fixed;
+  
+  top: 0px;
+  left: 0px;
+  width: 100%;
+
+  padding: 2px;
+
+  border-radius: 0px 0px 5px 5px;
+  border: 1px solid;
+
+  display: none;
+
+  background-color: gray;
+  color: white;
+
+  text-align: center;
+
+
+}
