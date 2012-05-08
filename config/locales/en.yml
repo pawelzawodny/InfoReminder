@@ -3,3 +3,20 @@
 
 en:
   hello: "Hello world"
+  welcome: "Welcome to InfoReminder app2"
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum tempus dolor et pellentesque. Morbi auctor commodo tellus sit amet sollicitudin. Suspendisse potenti. Mauris sed ipsum eleifend nunc pellentesque varius sit amet et enim. Aenean venenatis interdum tortor, et fermentum lorem bibendum vel. Aliquam tempus pharetra pharetra. In nisi libero, varius et laoreet in, porta et elit. Fusce ac lorem eu dui euismod dictum."
+  
+
+  register: "Register!"
+  register_info: "Why register?"
+  
+  findgroups: "Znajdź odpowiednią grupę"
+  findgroups_info: "Grupy"
+  
+  download_client: "Pobierz aplikacje i korzytaj do woli!"
+  download_client_info: "Pobierz se klienta"
+  
+  
+  
+
+

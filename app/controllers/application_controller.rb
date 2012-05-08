@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   layout :pick_layout
-
+  before_filter :set_locale
+  
   # Fetches group object from database and makes it accessible in views through @group
   def fetch_group
     @group = Group.find params[:group_id] unless params[:group_id].nil?
@@ -24,4 +25,10 @@ class ApplicationController < ActionController::Base
       'application'
     end
   end
+  
+  def set_locale
+    # jeżeli params[:locale] jest puste, zostanie użyta wartość I18n.default_locale
+    I18n.locale = params[:locale]
+  end
+  
 end
