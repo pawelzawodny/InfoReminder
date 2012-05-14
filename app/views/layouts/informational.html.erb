@@ -1,6 +1,36 @@
 <div id="middle">
   <div class="span-16 ">
-    <%= image_tag("slider.jpg", :width => '620', :class => "slider_sample")	 %>
+    <div id="showcase" class="showcase" style="padding-top: 20px;">
+    <!-- Each child div in #showcase represents a slide -->
+    <div class="showcase-slide">
+        <div class="showcase-content">
+            <div class="showcase-content-wrapper">
+                <%= image_tag("slider1.jpg", :alt => "01")	 %>
+            </div>
+        </div>
+    </div>
+    <div class="showcase-slide">
+        <div class="showcase-content">
+            <div class="showcase-content-wrapper">
+                <%= image_tag("slider2.jpg", :alt => "02")	 %>
+            </div>
+        </div>
+    </div>
+     <div class="showcase-slide">
+        <div class="showcase-content">
+            <div class="showcase-content-wrapper">
+                <%= image_tag("slider3.jpg", :alt => "03")	 %>
+            </div>
+        </div>
+    </div>
+     <div class="showcase-slide">
+        <div class="showcase-content">
+            <div class="showcase-content-wrapper">
+                <%= image_tag("slider4.jpg", :alt => "04")	 %>
+            </div>
+        </div>
+    </div>
+</div>
   </div>
   <div class="span-8 last">
     <div id="right_box">
