@@ -28,7 +28,14 @@ class ApplicationController < ActionController::Base
   
   def set_locale
     # jeżeli params[:locale] jest puste, zostanie użyta wartość I18n.default_locale
-    I18n.locale = params[:locale]
+    if !params[:locale].nil?
+      locale = params[:locale]
+    elsif session[:locale]
+      locale = session[:locale]
+    elsif
+      locale = I18n.locale
+    end 
+
+    I18n.locale = locale
   end
-  
 end
