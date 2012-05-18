@@ -37,5 +37,6 @@ class ApplicationController < ActionController::Base
     end 
 
     I18n.locale = locale
+    session[:locale] = locale
   end
 end
