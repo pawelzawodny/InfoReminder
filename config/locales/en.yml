@@ -16,6 +16,7 @@ en:
   download_client: "Download your application and use it!"
   download_client_info: "Once you click to download your client application - it will be personalized for your account and prepared on-the-fly for you to download. Ready to use right after download - synchronized with your groups and events."
   
+
   
   #menu#####################################
   find_groups: "Find group"
@@ -84,3 +85,7 @@ en:
   back: "Back"
   listing_events: "Listing events"
   
+
+  days_to_event: 'Days before event'
+  days_to_event_description: 'How early do you want to be notified before event occurs (days)'
+

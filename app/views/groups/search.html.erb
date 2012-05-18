@@ -1,11 +1,20 @@
-<h1>Find groups</h1>
-<div id="search_groups_toolbox">
-  <%= render :partial => 'search_toolbox' %>
+<div id="middle-panel">
+  <%= render :template => 'layouts/panel-menu' %>
+  <div class="span-18 last">
+    <div id="right_box_panel">
+      <div id="right_box_panel_inner">
+        <h1>Find groups</h1>
+        <div id="search_groups_toolbox">
+          <%= render :partial => 'search_toolbox' %>
+        </div>
+        <div id="search_groups_results">
+          <%= render :partial => 'list', :locals => { groups: @groups } %>
+        </div>
+        <div id="search_pagination">
+          <%= will_paginate @groups %>
+        </div>
+        <%= link_to 'New Group', new_group_path %>
+      </div>
+    </div>
+  </div>
 </div>
-<div id="search_groups_results">
-  <%= render :partial => 'list', :locals => { groups: @groups } %>
-</div>
-<div id="search_pagination">
-  <%= will_paginate @groups %>
-</div>
-<%= link_to 'New Group', new_group_path %> 
