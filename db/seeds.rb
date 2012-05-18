@@ -16,8 +16,8 @@ CollectionType = ConfigurationType.create({ name: 'Collection', default: '', hel
 Configuration.create([
   { 
     name: 'events.notification_interval',
-    label_text: 'Days to notify',
-    description: 'How early you want to be notified before event occurs (days)',
+    label_text: 'days_to_event',
+    description: 'days_to_event_description',
     configuration_type_id: IntegerType.id,
     default: 2
   }

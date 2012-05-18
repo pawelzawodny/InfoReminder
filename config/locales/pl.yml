@@ -6,3 +6,6 @@ pl:
   hello: "Witaj swiecie"
   
   step1head: "Zarejestruj się!"
+
+  days_to_event: 'Dni przed wydarzeniem'
+  days_to_event_description: 'Jak wcześnie chcesz otrzymywać powiadomienia przed wydarzeniami (dni)'

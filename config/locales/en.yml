@@ -16,7 +16,5 @@ en:
   download_client: "Pobierz aplikacje i korzytaj do woli!"
   download_client_info: "Pobierz se klienta"
   
-  
-  
-
-
+  days_to_event: 'Days before event'
+  days_to_event_description: 'How early do you want to be notified before event occurs (days)'
