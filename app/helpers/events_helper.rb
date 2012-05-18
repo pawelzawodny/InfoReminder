@@ -4,6 +4,6 @@ module EventsHelper
     date_str = date.strftime("%F")
     picker_class = 'datepicker'
 
-    label_tag(name) + text_field_tag(name, date_str, :class => picker_class)
+    label_tag(t(name)) + text_field_tag(name, date_str, :class => picker_class)
   end
 end

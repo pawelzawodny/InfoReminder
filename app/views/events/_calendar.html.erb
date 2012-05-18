@@ -1,7 +1,7 @@
 <div id="browse_ui">
   <%= form_tag browse_events_path, :id => 'browse_events_form' do %>
     <div class="field">
-      <%= label_tag "Group" %>
+      <%= label_tag(t(:group)) %>
       <%= group_picker current_user.readable_groups, params[:group_id] %>
     </div>
     <div class="field">
