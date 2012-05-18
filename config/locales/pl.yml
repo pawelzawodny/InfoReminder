@@ -89,4 +89,6 @@ pl:
 
   days_to_event: 'Dni przed wydarzeniem'
   days_to_event_description: 'Jak wcześnie chcesz otrzymywać powiadomienia przed wydarzeniami (dni)'
+  date_start: "Data początkowa"
+  date_end: "Data końcowa"
 

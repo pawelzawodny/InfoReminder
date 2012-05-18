@@ -88,4 +88,7 @@ en:
 
   days_to_event: 'Days before event'
   days_to_event_description: 'How early do you want to be notified before event occurs (days)'
+  
+  date_start: "Date start"
+  date_end: "Date end"
 
