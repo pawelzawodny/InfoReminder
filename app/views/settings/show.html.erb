@@ -8,7 +8,7 @@
         <% current_user.configuration.each do |name, config| %>
         <%= render :partial => 'configuration_field', :locals => { :config => config } %>
         <% end %>
-        <%= submit_tag("Save") %>
+        <%= submit_tag(t(:save)) %>
         <% end %>
       </div>
     </div>

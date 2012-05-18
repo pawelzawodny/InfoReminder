@@ -3,14 +3,14 @@
   <div class="span-18 last">
     <div id="right_box_panel">
       <div id="right_box_panel_inner">
-        <h1>Manage groups</h1>
-        <h3>Owned groups</h3>
+        <h1><%=t :manage_groups %></h1>
+        <h3><%=t :owned_groups%></h3>
         <div class="inside_box_panel"><%= render :partial => 'list', :locals => { groups: @groups[:owner] } %> </div>
         
-        <h3>Member of</h3>
+        <h3><%=t :member_of%></h3>
         <div class="inside_box_panel"><%= render :partial => 'list', :locals => { groups: @groups[:member] } %></div>
 
-        <%= link_to 'New Group', new_group_path %>
+        <%= link_to t(:new_group), new_group_path %>
       </div>
     </div>
   </div>

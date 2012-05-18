@@ -1,13 +1,13 @@
 <div class="span-24 ">
   <div id="logged_middle">
     <div id="logged_middle_inner">
-      <h1>Listing events</h1>
+      <h1><%=t :listing_events %></h1>
       <table>
         <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Date</th>
-          <th>Group</th>
+          <th><%=t :title %></th>
+          <th><%=t :description %></th>
+          <th><%=t :date %></th>
+          <th><%=t :group %></th>
           <th></th>
           <th></th>
           <th></th>
@@ -18,9 +18,9 @@
           <td><%= event.description %></td>
           <td><%= event.date %></td>
           <td><%= event.group %></td>
-          <td><%= link_to 'Show', group_event_path(event.group_id, event.id) %></td>
-          <td><%= link_to 'Edit', edit_group_event_path(event.group.id, event.id) %></td>
-          <td><%= link_to 'Destroy', group_event_path(event.group_id, event.id), confirm: 'Are you sure?', method: :delete %></td>
+          <td><%= link_to t(:show), group_event_path(event.group_id, event.id) %></td>
+          <td><%= link_to t(:edit), edit_group_event_path(event.group.id, event.id) %></td>
+          <td><%= link_to t(:destroy), group_event_path(event.group_id, event.id), confirm: 'Are you sure?', method: :delete %></td>
         </tr>
         <% end %>
       </table>

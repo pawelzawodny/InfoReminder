@@ -5,22 +5,22 @@
         <%= notice %>
       </p>
       <p>
-        <b>Title:</b>
+        <b><%=t :title %></b>
         <%= @event.title %>
       </p>
       <p>
-        <b>Description:</b>
+        <b><%=t :description %></b>
         <%= @event.description %>
       </p>
       <p>
-        <b>Date:</b>
+        <b><%=t :date %></b>
         <%= @event.date %>
       </p>
       <p>
-        <b>Group:</b>
+        <b><%=t :group %></b>
         <%= @event.group %>
       </p>
-      <%= link_to 'Edit', edit_group_event_path(@event.group_id, @event.id) %>
+      <%= link_to t(: edit), edit_group_event_path(@event.group_id, @event.id) %>
     </div>
   </div>
 </div>

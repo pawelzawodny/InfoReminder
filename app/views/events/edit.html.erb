@@ -1,10 +1,10 @@
 <div class="span-24 ">
   <div id="logged_middle">
     <div id="logged_middle_inner">
-      <h1>Editing event</h1>
+      <h1><%=t :editing_event %></h1>
       <%= render 'form' %>
 
-      <%= link_to 'Show', group_event_path(@event.group_id, @event.id) %>
+      <%= link_to t(:show), group_event_path(@event.group_id, @event.id) %>
     </div>
   </div>
 </div>

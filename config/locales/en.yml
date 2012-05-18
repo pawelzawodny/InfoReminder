@@ -2,21 +2,85 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
-  welcome: "Welcome to InfoReminder app2"
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum tempus dolor et pellentesque. Morbi auctor commodo tellus sit amet sollicitudin. Suspendisse potenti. Mauris sed ipsum eleifend nunc pellentesque varius sit amet et enim. Aenean venenatis interdum tortor, et fermentum lorem bibendum vel. Aliquam tempus pharetra pharetra. In nisi libero, varius et laoreet in, porta et elit. Fusce ac lorem eu dui euismod dictum."
+  hello: "Hello"
+  welcome: "Welcome to InfoReminder!"
+  description: "infoReminder is an application that will keep you informed about any events you might be interested in. Simply sign up, join relevant group and download desktop application. The application will keep you informed of any upcoming events!"
   
 
-  register: "Register!"
-  register_info: "Why register?"
+  register: "Sign up!"
+  register_info: "Why sign up? Once you have an account you can join groups of your interest or set up new ones."
   
-  findgroups: "Znajdź odpowiednią grupę"
-  findgroups_info: "Grupy"
+  findgroups: "Find relevant group"
+  findgroups_info: "Browse and join public gropus or set up your own prive groups and invite users."
   
-  download_client: "Pobierz aplikacje i korzytaj do woli!"
-  download_client_info: "Pobierz se klienta"
+  download_client: "Download your application and use it!"
+  download_client_info: "Once you click to download your client application - it will be personalized for your account and prepared on-the-fly for you to download. Ready to use right after download - synchronized with your groups and events."
+  
+  
+  #menu#####################################
+  find_groups: "Find group"
+  manage_groups: "Manage groups"
+  upcoming_events: "Upcoming events"
+  browse_events: "Browse events"
+  download_client: "Download client"
+  settings: "Settings"
+  
+  would_you_like_to : "would you like to "
+  sign_out: "Sign out"
+  sign_in: "Sign in"
+  sign_up: "Sign up"
+  please: "Please"
+  or: "or"
+  
+  #manage_groups############################
+  owned_groups: "Your groups"
+  member_of: "Member of: "
+  new_group: "New group"
+  ##########################################
+  #upcoming_events##########################
+  upcoming_events: "Upcoming events"
   
   
   
-
-
+  
+  create_category: "Create category"
+  
+  page_load_info: "Please wait, page is being loaded"
+  
+  save: "Save"
+  
+  set_interval: "Set reminder interval"
+  
+  
+  confirm_account_notice : "You can confirm your account through the link below:"
+  confirm : "Confirm my account"
+  
+  reset_password_notice: "Someone has requested a link to change your password, and you can do this through the link below."
+  reset_password_notice2: "If you didn't request this, please ignore this email."
+  reset_password_notice3: "Your password won't change until you access the link above and create a new one."
+  change_password : "Change password"
+  
+  account_locked_info : "Your account has been locked due to an excessive amount of unsuccessful sign in attempts."
+  account_locked_info : "Click the link below to unlock your account:"
+  
+  unlock: "Unlock account"
+  
+  
+  change_your_password: "Change your password"
+  forgot_password: "Forgot password?"
+  
+  send_reset_instructions: "Send me reset password instructions"
+  
+  edit: "Edit"
+  destroy: "Destroy"
+  title: "Title:"
+  description: "Description:"
+  date: "Date:"
+  group: "Group"
+  event_browser: "Browse events"
+  show: "Show"
+  editing_event: "Editing event"
+  new_event: "New event"
+  back: "Back"
+  listing_events: "Listing events"
+  

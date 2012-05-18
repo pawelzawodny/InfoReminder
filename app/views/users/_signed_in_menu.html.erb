@@ -1,12 +1,12 @@
-<%= link_to 'Manage groups', manage_groups_path %>
-<%= link_to 'Upcoming events', upcoming_events_path %>
-<%= link_to 'Browse events', browse_events_path %>
-<%= link_to 'Download client', prepare_setup_path %>
-<%= link_to 'Settings', show_settings_path %>
+<%= link_to t(:manage_groups), manage_groups_path %>
+<%= link_to t(:upcoming_events), upcoming_events_path %>
+<%= link_to t(:browse_events), browse_events_path %>
+<%= link_to t(:download_client), prepare_setup_path %>
+<%= link_to t(:settings), show_settings_path %>
 	<div id="credentials_information">
-  Welcome 
+  <%=t :hello %> 
   <%= current_user.email %> 
-  would you like to 
-  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+  <%=t :would_you_like_to %>
+  <%= link_to t(:sign_out), destroy_user_session_path, :method => :delete %>
 </div>
     

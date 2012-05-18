@@ -1,8 +1,86 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-  
 pl:
-  hello: "Witaj swiecie"
+  hello: "Witaj"
+  welcome: "Witaj w aplikacji InfoReminder!"
+  description: "infoReminder to nowatorska aplikacja, która sprawi, że nigdy już nie zapomnisz o ważnych dla Ciebie wydarzeniach.
+  W aplikacji możesz dołączać do istniejących grup powiadomień, lub tworzyć własne. Po dołączeniu do grupy - np. szkoła - możesz pobrać spersonalizowaną aplikację desktopową, która będzie powiadamiać Cię na bierząco o wydarzeniach publikowanych w grupie."
   
-  step1head: "Zarejestruj się!"
+
+  register: "Zarejestruj się!"
+  register_info: "Dlaczego warto się rejestrować? Po rejstracji będziesz mógł dołączać do interesujących Cię grup i zakładać swoje - prywatne lub publiczne."
+  
+  findgroups: "Znajdź odpowiednią grupę"
+  findgroups_info: "Możesz przeglądać i dołączać do grup publicznych. Dołączać do prywatnych - na zaproszenie, lub tworzyć własne - i zapraszać do nich innych użytkowników"
+  
+  download_client: "Pobierz aplikacje i korzytaj do woli!"
+  download_client_info: "Aplikacja zostanie stworzona specjalnie dla Ciebie, spersonalizowana dla Twojego konta i Twoich grup. Wszystko zostanie automatycznie przygotowane, gdy tylko klikniesz by ją pobrać."
+  
+
+  #menu#####################################
+  find_groups: "Znajdź grupę"
+  manage_groups: "Zarządzaj grupami"
+  upcoming_events: "Nadchodzące wydarzenia"
+  browse_events: "Przeglądaj wydarzenia"
+  download_client: "Ściągnij aplikację"
+  settings: "Ustawienia"
+  
+  would_you_like_to : " "
+  sign_out: "Wyloguj"
+  sign_in: "Zaloguj"
+  sign_up: "Zarejestruj się"
+  please: "Proszę"
+  or: "albo"
+ 
+  #manage_groups############################
+  owned_groups: "Twoje grupy"
+  member_of: "Należysz do: "
+  new_group: "Nowa grupa"
+  ##########################################
+  #upcoming_events##########################
+  upcoming_events: "Nadchodzące wydarzenia"
+  
+
+  
+  create_category: "Utwórz kategorię"
+  
+  page_load_info: "Proszę czekać, strona jest ładowana"
+  
+  save: "Zapisz"
+  
+  set_interval: "Ustaw interwał"
+  
+  
+  confirm_account_notice : "Potwierdz konto klikając w link poniżej"
+  confirm : "Potwierdź moje konto"
+  
+  reset_password_notice: "Ktoś rozpoczął procedurę zmiany hasła. Możesz to zrobić klikając w link poniżej."
+  reset_password_notice2: "Jeśli nie Ty rozpocząłeś procedurę, zigoruj tą wiadomość."
+  reset_password_notice3: "Twoje hasło nie będzie działać, dopóki nie kliknieszw link i nie stworzysz nowego."
+  change_password : "Zmień hasło"
+  
+  account_locked_info : "Twoje konto zostało zablokowane z powodu zbyt dużej liczby nieudanych logowań."
+  account_locked_info : "Kliknij w link poniżęj by odblokować konto:"
+  
+  unlock: "Odblokuj konto"
+  
+  
+  change_your_password: "Zmień hasło"
+  forgot_password: "Zapomniałeś hasła?"
+  
+  send_reset_instructions: "Wyślij instrukcje resetowania hasła"
+  
+  edit: "Edytuj"
+  destroy: "Usuń"
+  title: "Tytuł:"
+  description: "Opis:"
+  date: "Data:"
+  group: "Grupa"
+  event_browser: "Przeglądaj wydarzenia"
+  show: "Pokaż"
+  editing_event: "Edytuj wydarzenie"
+  new_event: "Nowe wydarzenie"
+  back: "Cofnij"
+  listing_events: "Lista wydarzeń"
+  

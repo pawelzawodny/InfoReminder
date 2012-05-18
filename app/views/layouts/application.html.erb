@@ -7,14 +7,14 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div id="loading_bar">Please wait, page is loaded</div>
+    <div id="loading_bar"><%t= :page_load_info %></div>
     <div class="container">
       <div class="span-24">
         <div id="header">
           <%= link_to 'infoReminder', root_url, :id=>'title_logo' %>
           <div id="top_menu">
             <div id="user_menu">
-              <%= link_to 'Find groups', search_groups_path %>
+              <%= link_to t(:find_groups), search_groups_path %>
               <% if user_signed_in? %>
               <%= render partial: 'users/signed_in_menu' %>
 

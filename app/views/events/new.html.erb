@@ -3,10 +3,10 @@
   <div class="span-18 last">
     <div id="right_box_panel">
       <div id="right_box_panel_inner">
-        <h1>New event</h1>
+        <h1><%=t :new_event %></h1>
         <%= render 'form' %>
 
-        <%= link_to 'Back', group_events_path %>
+        <%= link_to t(:back), group_events_path %>
       </div>
     </div>
   </div>
