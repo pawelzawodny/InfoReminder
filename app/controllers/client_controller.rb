@@ -42,7 +42,7 @@ class ClientController < ApplicationController
   end
 
   def upcoming_events
-    events = @current_user.events_with_unaccepted_notificatins
+    events = @current_user.events_with_unaccepted_notifications
 
     respond_to do |format|
       format.json { render json: events, include: [ :group, :category ] }
