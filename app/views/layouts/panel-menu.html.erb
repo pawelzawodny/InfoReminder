@@ -1,5 +1,13 @@
- <div class="span-6 ">
-    <div id="left-menu">
-      test
+<div class="span-6 ">
+  <div id="left-menu">
+    <div id="menu_links">
+      <div class="menu_title">
+        Menu
+      </div>
+      <%= link_to t(:find_groups), search_groups_path %>
+      <%= link_to t(:manage_groups), manage_groups_path %>
+      <%= link_to t(:upcoming_events), upcoming_events_path %>
+      <%= link_to t(:browse_events), browse_events_path %>
     </div>
   </div>
+</div>

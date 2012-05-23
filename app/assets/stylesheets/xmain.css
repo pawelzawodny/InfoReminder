@@ -83,3 +83,5 @@ input#date_start{margin-left:5px; width:80px;}
 input#date_end{margin-left:5px; width:80px;}
 #browse_ui{margin-bottom:30px;}
 
+#menu_links a{display:block; padding: 0 5px 5px 25px;}
+.menu_title{font-family:DejaVuSans; font-size:1.2em; color:#3A83BA; padding:35px 5px 5px 10px; }

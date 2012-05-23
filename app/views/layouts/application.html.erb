@@ -14,7 +14,6 @@
           <%= link_to 'infoReminder', root_url, :id=>'title_logo' %>
           <div id="top_menu">
             <div id="user_menu">
-              <%= link_to t(:find_groups), search_groups_path %>
               <% if user_signed_in? %>
               <%= render partial: 'users/signed_in_menu' %>
 
